@@ -4,6 +4,31 @@ title: "接入指南"
 
 欢迎使用 Phoenix 接口文档。本文档专门为券商（Broker）提供与 Phoenix 交易系统对接的完整技术支持。
 
+通过本文档，您可以实现：
+1. **用户同步**: 将您的用户系统映射到Phoenix核心交易。
+2. **资产划转**: 实现券商账户与交易平台之间的实时资金划拨。
+3. **API Key**: 为您的终端用户生成和管理交易所需的访问密钥。
+
+
+## 用户接入流程
+
+以下是用户通过商户侧接入 Phoenix 核心交易的流程图：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 用户
+    participant Merchant as B端商户侧
+    participant Phoenix as Phoenix核心交易
+
+    User->>Merchant: 用户登录商户侧
+    Note over Merchant, Phoenix: 调用登录接口
+    Merchant->>Phoenix: 用户登录 (/api/member/login)
+    Phoenix-->>Merchant: 返回跳转URL
+    Merchant-->>User: 登录成功
+    User->>Phoenix: 通过跳转URL直连Phoenix核心交易
+```
+
 ## API 网关地址
 
 根据您的对接阶段，请选择对应的网关地址进行调用。
@@ -21,7 +46,7 @@ title: "接入指南"
 
 ## 系统概览
 
-Phoenix 是 Phoenix 系统中连接外部券商与内部撮合引擎的核心组件。通过本接口，您可以实现：
+Phoenix Broker 是 Phoenix 系统中连接外部券商与内部撮合引擎的核心组件。通过本接口，您可以实现：
 
 1. **用户同步**: 将您的用户系统映射到 Phoenix 交易 UID。
 2. **资产划转**: 实现券商账户与交易平台之间的实时资金划拨。
