@@ -64,8 +64,8 @@
     }
   },
   "logo": {
-    "light": "/public/logo-light.svg",
-    "dark": "/public/logo-dark.svg"
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
   },
   "openapi": "openapi.json",
   "contextual": {
