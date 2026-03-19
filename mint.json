@@ -1,0 +1,49 @@
+{
+  "name": "PHX Broker Gateway",
+  "navigation": [
+    {
+      "group": "入门指南",
+      "pages": [
+        "guide/introduction",
+        "guide/authentication",
+        "guide/response"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        {
+          "group": "用户",
+          "pages": [
+            "api-reference/user/register",
+            "api-reference/user/login",
+            "api-reference/user/logout",
+            "api-reference/user/update"
+          ]
+        },
+        {
+          "group": "资产",
+          "pages": [
+            "api-reference/asset/transfer"
+          ]
+        },
+        {
+          "group": "API Key",
+          "pages": [
+            "api-reference/apikey/create-apikey",
+            "api-reference/apikey/list-apikey",
+            "api-reference/apikey/update-apikey",
+            "api-reference/apikey/delete-apikey"
+          ]
+        }
+      ]
+    }
+  ],
+  "openapi": "openapi.json",
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#0070f3",
+    "light": "#3291ff",
+    "dark": "#003159"
+  }
+}
