@@ -8,11 +8,11 @@
   },
   "servers": [
     {
-      "url": "https://api.luckywin.trade",
+      "url": "https://api.phoenix.io",
       "description": "生产环境"
     },
     {
-      "url": "https://api-test.luckywin.trade",
+      "url": "https://api-test.phoenix.io",
       "description": "测试环境"
     },
     {
