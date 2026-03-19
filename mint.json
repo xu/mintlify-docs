@@ -12,7 +12,7 @@
   },
   "navigation": [
     {
-      "group": "入门指南",
+      "group": "接入指南",
       "pages": [
         "guide/introduction",
         "guide/authentication",
