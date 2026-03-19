@@ -1,5 +1,15 @@
 {
-  "name": "PHX Broker Gateway",
+  "name": "Broker Gateway",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0070f3",
+    "light": "#3291ff",
+    "dark": "#003159"
+  },
   "navigation": [
     {
       "group": "入门指南",
@@ -40,10 +50,9 @@
     }
   ],
   "openapi": "openapi.json",
-  "favicon": "/favicon.png",
-  "colors": {
-    "primary": "#0070f3",
-    "light": "#3291ff",
-    "dark": "#003159"
+  "footer": {
+    "socials": {
+      "github": "https://github.com/phx-de"
+    }
   }
 }
