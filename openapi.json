@@ -210,7 +210,7 @@
       }
     },
     "/api/v1/asset/balance": {
-      "post": {
+      "get": {
         "summary": "查询用户资产余额",
         "description": "查询指定用户在平台上的实时资产余额列表。",
         "tags": [
@@ -243,6 +243,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "description": "券商侧用户 ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "required": false,
+            "description": "币种 (可选，不传返回全部)",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -253,17 +271,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/AssetBalanceResponse"
                 }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "description": "查询信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AssetBalanceRequest"
               }
             }
           }
