@@ -1,1318 +1,654 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "description": "券商管理与用户映射服务接口文档",
-        "title": "PHX Broker Gateway 接口文档",
-        "contact": {},
-        "version": "1.0"
-    },
-    "host": "localhost:38008",
-    "basePath": "/",
-    "paths": {
-        "/api/v1/apikey/create": {
-            "post": {
-                "description": "为特定用户创建新的访问密钥对。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "密钥管理"
-                ],
-                "summary": "创建用户 API Key",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "创建信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.CreateApiKeyRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.ApiKeyCreateResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/apikey/delete": {
-            "post": {
-                "description": "永久删除指定的访问密钥。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "密钥管理"
-                ],
-                "summary": "删除用户 API Key",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "删除信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.DeleteApiKeyRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/apikey/list": {
-            "get": {
-                "description": "获取指定用户下的所有访问密钥。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "密钥管理"
-                ],
-                "summary": "获取 API Key 列表",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "用户 ID",
-                        "name": "user_id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.ApiKeyListResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/apikey/update": {
-            "post": {
-                "description": "更新访问密钥的权限、IP 白名单或状态。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "密钥管理"
-                ],
-                "summary": "更新用户 API Key",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "更新信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.UpdateApiKeyRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/asset/transfer": {
-            "post": {
-                "description": "在用户的账户内进行业务单元间的资金划转。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "资产管理"
-                ],
-                "summary": "创建资金划转",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "时间戳",
-                        "name": "x-timestamp",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "划转信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.TransferRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/user/login": {
-            "post": {
-                "description": "绑定用户登录 Token，用于后续身份校验。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户管理"
-                ],
-                "summary": "用户登录",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "时间戳",
-                        "name": "x-timestamp",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "登录信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.LoginUserRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/user/logout": {
-            "post": {
-                "description": "清除用户登录状态。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户管理"
-                ],
-                "summary": "用户登出",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "时间戳",
-                        "name": "x-timestamp",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "登出信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.LogoutUserRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/user/register": {
-            "post": {
-                "description": "将券商侧用户 ID 映射到平台全局 UID。如果用户已存在，返回现有 UID。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户管理"
-                ],
-                "summary": "用户注册",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "时间戳",
-                        "name": "x-timestamp",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "注册信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.RegisterUserRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.UserRegisterResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/user/update": {
-            "post": {
-                "description": "更新用户昵称或描述信息。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户管理"
-                ],
-                "summary": "更新用户信息",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "券商 API Key",
-                        "name": "x-api-key",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "description": "时间戳",
-                        "name": "x-timestamp",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "签名结果",
-                        "name": "x-signature",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "更新信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.UpdateUserRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/auth/verify-signature": {
-            "post": {
-                "description": "验证 OpenAPI 请求的 HMAC-SHA256 签名。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "内部接口"
-                ],
-                "summary": "内部签名校验",
-                "parameters": [
-                    {
-                        "description": "签名信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifySignatureRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifySignatureResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/auth/verify-token": {
-            "post": {
-                "description": "校验 Token 合法性并返回简要用户信息。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "内部接口"
-                ],
-                "summary": "内部 Token 校验",
-                "parameters": [
-                    {
-                        "description": "Token 信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifyTokenRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifyTokenResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/broker/all": {
-            "get": {
-                "description": "获取所有注册券商的简要列表 (ID 和名称)。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "券商管理"
-                ],
-                "summary": "获取全部券商列表",
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerAllResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/broker/list": {
-            "get": {
-                "description": "获取所有注册券商的分页列表。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "券商管理"
-                ],
-                "summary": "分页获取券商列表",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "页码",
-                        "name": "page",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "每页数量",
-                        "name": "page_size",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerListResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/broker/{broker_id}": {
-            "get": {
-                "description": "根据 ID 获取券商详细信息。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "券商管理"
-                ],
-                "summary": "获取券商详情",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "券商 ID",
-                        "name": "broker_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerInfoResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/inner/user/create-special": {
-            "post": {
-                "description": "创建系统账户或做市商账户，UID 遵循特定范围且不混淆。",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "内部接口"
-                ],
-                "summary": "创建特殊账户 (系统/做市商)",
-                "parameters": [
-                    {
-                        "description": "账户信息",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/internal_api.CreateSpecialUserRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "成功",
-                        "schema": {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.UserRegisterResponse"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "internal_api.CreateApiKeyRequest": {
-            "type": "object",
-            "required": [
-                "user_id"
-            ],
-            "properties": {
-                "authorities": {
-                    "description": "权限列表 ([READ, TRADE])",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "example": [
-                        "[\"READ\"]"
-                    ]
-                },
-                "ip_list": {
-                    "description": "IP 白名单 (逗号分隔)",
-                    "type": "string",
-                    "example": "127.0.0.1"
-                },
-                "remark": {
-                    "description": "备注信息",
-                    "type": "string",
-                    "example": "我的密钥"
-                },
-                "user_id": {
-                    "description": "券商侧用户 ID",
-                    "type": "string",
-                    "example": "user_01"
-                }
-            }
-        },
-        "internal_api.CreateSpecialUserRequest": {
-            "type": "object",
-            "required": [
-                "broker_id",
-                "type"
-            ],
-            "properties": {
-                "broker_id": {
-                    "description": "券商 ID",
-                    "type": "integer",
-                    "example": 1001
-                },
-                "type": {
-                    "description": "账户类型: sys, mm",
-                    "type": "string",
-                    "enum": [
-                        "sys",
-                        "mm"
-                    ],
-                    "example": "sys"
-                }
-            }
-        },
-        "internal_api.DeleteApiKeyRequest": {
-            "type": "object",
-            "required": [
-                "api_key"
-            ],
-            "properties": {
-                "api_key": {
-                    "description": "待删除的 API Key",
-                    "type": "string",
-                    "example": "ak_123"
-                }
-            }
-        },
-        "internal_api.LoginUserRequest": {
-            "type": "object",
-            "required": [
-                "token",
-                "user_id"
-            ],
-            "properties": {
-                "token": {
-                    "description": "登录 Token",
-                    "type": "string",
-                    "example": "token_123"
-                },
-                "user_id": {
-                    "description": "券商侧用户 ID",
-                    "type": "string",
-                    "example": "user_01"
-                }
-            }
-        },
-        "internal_api.LogoutUserRequest": {
-            "type": "object",
-            "required": [
-                "user_id"
-            ],
-            "properties": {
-                "user_id": {
-                    "description": "券商侧用户 ID",
-                    "type": "string",
-                    "example": "user_01"
-                }
-            }
-        },
-        "internal_api.RegisterUserRequest": {
-            "type": "object",
-            "required": [
-                "user_id"
-            ],
-            "properties": {
-                "desc": {
-                    "description": "用户描述",
-                    "type": "string",
-                    "example": "测试用户"
-                },
-                "user_id": {
-                    "description": "券商侧用户唯一 ID",
-                    "type": "string",
-                    "example": "user_01"
-                },
-                "user_name": {
-                    "description": "用户昵称",
-                    "type": "string",
-                    "example": "张三"
-                }
-            }
-        },
-        "internal_api.TransferRequest": {
-            "type": "object",
-            "required": [
-                "amount",
-                "currency",
-                "direction",
-                "txn_id",
-                "user_id"
-            ],
-            "properties": {
-                "amount": {
-                    "description": "划转金额",
-                    "type": "string",
-                    "example": "100.00"
-                },
-                "currency": {
-                    "description": "币种",
-                    "type": "string",
-                    "example": "USDT"
-                },
-                "direction": {
-                    "description": "划转方向: 1-入, 2-出",
-                    "type": "integer",
-                    "enum": [
-                        1,
-                        2
-                    ],
-                    "example": 1
-                },
-                "remark": {
-                    "description": "备注",
-                    "type": "string",
-                    "example": "充值"
-                },
-                "txn_id": {
-                    "description": "券商侧唯一交易流水号",
-                    "type": "string",
-                    "example": "txn_123456"
-                },
-                "user_id": {
-                    "description": "券商侧用户 ID",
-                    "type": "string",
-                    "example": "user_01"
-                }
-            }
-        },
-        "internal_api.UpdateApiKeyRequest": {
-            "type": "object",
-            "required": [
-                "api_key"
-            ],
-            "properties": {
-                "api_key": {
-                    "description": "待更新的 API Key",
-                    "type": "string",
-                    "example": "ak_123"
-                },
-                "authorities": {
-                    "description": "权限列表",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "example": [
-                        "[\"READ\"]"
-                    ]
-                },
-                "ip_list": {
-                    "description": "IP 白名单",
-                    "type": "string",
-                    "example": "127.0.0.1"
-                },
-                "remark": {
-                    "description": "备注",
-                    "type": "string",
-                    "example": "更新后的备注"
-                },
-                "status": {
-                    "description": "状态: 1-正常, 2-禁用",
-                    "type": "integer",
-                    "example": 1
-                }
-            }
-        },
-        "internal_api.UpdateUserRequest": {
-            "type": "object",
-            "required": [
-                "user_id"
-            ],
-            "properties": {
-                "desc": {
-                    "description": "新描述",
-                    "type": "string",
-                    "example": "新描述"
-                },
-                "user_id": {
-                    "description": "券商侧用户 ID",
-                    "type": "string",
-                    "example": "user_01"
-                },
-                "user_name": {
-                    "description": "新昵称",
-                    "type": "string",
-                    "example": "新昵称"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.ApiKeyCreateResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.ApiKeyCreateResponseData"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.ApiKeyCreateResponseData": {
-            "type": "object",
-            "properties": {
-                "key": {
-                    "description": "API Key 详细信息",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerUserApiKey"
-                        }
-                    ]
-                },
-                "sk": {
-                    "description": "原始 API Secret (仅创建时返回一次)",
-                    "type": "string",
-                    "example": "abc123456789"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.ApiKeyListResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerUserApiKey"
-                    }
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerAllResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                    }
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerInfo": {
-            "type": "object",
-            "properties": {
-                "api_key": {
-                    "description": "签名用的 API Key",
-                    "type": "string",
-                    "example": "test_ak"
-                },
-                "broker_id": {
-                    "description": "券商业务 ID",
-                    "type": "integer",
-                    "example": 1001
-                },
-                "config": {
-                    "description": "额外配置 (JSON 字符串)",
-                    "type": "string",
-                    "example": "{}"
-                },
-                "created_at": {
-                    "description": "创建时间",
-                    "type": "string"
-                },
-                "domain": {
-                    "description": "券商网站域名",
-                    "type": "string",
-                    "example": "broker.com"
-                },
-                "logo": {
-                    "description": "券商 Logo 地址",
-                    "type": "string",
-                    "example": "https://logo.com/a.png"
-                },
-                "name": {
-                    "description": "券商名称",
-                    "type": "string",
-                    "example": "DemoBroker"
-                },
-                "status": {
-                    "description": "状态 (1:启用, 0:禁用)",
-                    "type": "integer",
-                    "example": 1
-                },
-                "updated_at": {
-                    "description": "更新时间",
-                    "type": "string"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerInfoResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerInfo"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerListResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerListResponseData"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerListResponseData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "description": "券商信息列表",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/phx-broker-gateway_internal_model.BrokerInfo"
-                    }
-                },
-                "total": {
-                    "description": "总记录数",
-                    "type": "integer",
-                    "example": 10
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.BrokerUserApiKey": {
-            "type": "object",
-            "properties": {
-                "api_key": {
-                    "description": "访问密钥 (Access Key)",
-                    "type": "string",
-                    "example": "ak_123"
-                },
-                "authorities": {
-                    "description": "权限列表 (JSON 格式)",
-                    "type": "string",
-                    "example": "[\"READ\"]"
-                },
-                "broker_id": {
-                    "description": "所属券商 ID",
-                    "type": "integer",
-                    "example": 1001
-                },
-                "created_at": {
-                    "description": "创建时间",
-                    "type": "string"
-                },
-                "expired_at": {
-                    "description": "过期时间戳 (0 表示永不过期)",
-                    "type": "integer",
-                    "example": 0
-                },
-                "id": {
-                    "description": "内部主键 ID",
-                    "type": "integer",
-                    "example": 1
-                },
-                "ip_white_list": {
-                    "description": "IP 白名单",
-                    "type": "string",
-                    "example": "127.0.0.1"
-                },
-                "passphrase": {
-                    "description": "API 口令 (可选)",
-                    "type": "string",
-                    "example": "pass123"
-                },
-                "remark": {
-                    "description": "备注信息",
-                    "type": "string",
-                    "example": "我的密钥"
-                },
-                "status": {
-                    "description": "状态: 1-正常, 2-禁用",
-                    "type": "integer",
-                    "example": 1
-                },
-                "updated_at": {
-                    "description": "更新时间",
-                    "type": "string"
-                },
-                "user_id": {
-                    "description": "券商侧用户唯一 ID",
-                    "type": "string",
-                    "example": "user_01"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.Response": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "description": "状态码 (200:成功, 400:参数错误, 500:系统错误)",
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "description": "响应数据"
-                },
-                "message": {
-                    "description": "提示信息",
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.SimpleUserDTO": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "description": "平台用户 ID",
-                    "type": "integer",
-                    "example": 1000885589780
-                },
-                "uid": {
-                    "description": "混淆后的全局 UID",
-                    "type": "integer",
-                    "example": 1000885589780
-                },
-                "username": {
-                    "description": "用户名",
-                    "type": "string",
-                    "example": "Tester"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.UserRegisterResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.UserRegisterResponseData"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.UserRegisterResponseData": {
-            "type": "object",
-            "properties": {
-                "uid": {
-                    "description": "平台生成的唯一用户ID",
-                    "type": "integer",
-                    "example": 1000885589780
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifySignatureRequest": {
-            "type": "object",
-            "required": [
-                "apiKey",
-                "method",
-                "path",
-                "signature",
-                "timestamp"
-            ],
-            "properties": {
-                "apiKey": {
-                    "description": "访问密钥",
-                    "type": "string",
-                    "example": "7007b96cf748fdd0"
-                },
-                "body": {
-                    "description": "请求体 (可选)",
-                    "type": "string",
-                    "example": "{\"user_id\":\"123\"}"
-                },
-                "method": {
-                    "description": "HTTP 方法",
-                    "type": "string",
-                    "example": "POST"
-                },
-                "path": {
-                    "description": "请求路径",
-                    "type": "string",
-                    "example": "/api/v1/user/login"
-                },
-                "query": {
-                    "description": "请求参数 (可选)",
-                    "type": "string",
-                    "example": "user_id=123"
-                },
-                "signature": {
-                    "description": "签名结果",
-                    "type": "string",
-                    "example": "base64_str"
-                },
-                "timestamp": {
-                    "description": "时间戳 (秒或毫秒)",
-                    "type": "string",
-                    "example": "1689584042"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifySignatureResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifySignatureResponseData"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifySignatureResponseData": {
-            "type": "object",
-            "properties": {
-                "authorities": {
-                    "description": "API Key 权限列表",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "example": [
-                        "[\"READ\"]"
-                    ]
-                },
-                "isValid": {
-                    "description": "签名是否有效",
-                    "type": "boolean",
-                    "example": true
-                },
-                "userId": {
-                    "description": "券商侧用户ID",
-                    "type": "string",
-                    "example": "broker_user_01"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifyTokenRequest": {
-            "type": "object",
-            "required": [
-                "token"
-            ],
-            "properties": {
-                "token": {
-                    "description": "登录 Token",
-                    "type": "string",
-                    "example": "demo_token_153924"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifyTokenResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "example": 200
-                },
-                "data": {
-                    "$ref": "#/definitions/phx-broker-gateway_internal_model.VerifyTokenResponseData"
-                },
-                "message": {
-                    "type": "string",
-                    "example": "成功"
-                }
-            }
-        },
-        "phx-broker-gateway_internal_model.VerifyTokenResponseData": {
-            "type": "object",
-            "properties": {
-                "user": {
-                    "description": "用户基本信息",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/phx-broker-gateway_internal_model.SimpleUserDTO"
-                        }
-                    ]
-                }
-            }
-        }
+  "openapi": "3.0.0",
+  "info": {
+    "description": "券商管理与用户映射服务接口文档",
+    "title": "PHX Broker Gateway 接口文档",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:38008"
     }
+  ],
+  "paths": {
+    "/api/v1/apikey/create": {
+      "post": {
+        "summary": "创建用户 API Key",
+        "description": "为特定用户创建新的访问密钥对。",
+        "tags": [
+          "密钥管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.ApiKeyCreateResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "创建信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.CreateApiKeyRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apikey/delete": {
+      "post": {
+        "summary": "删除用户 API Key",
+        "description": "永久删除指定的访问密钥。",
+        "tags": [
+          "密钥管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "删除信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.DeleteApiKeyRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apikey/list": {
+      "get": {
+        "summary": "获取 API Key 列表",
+        "description": "获取指定用户下的所有访问密钥。",
+        "tags": [
+          "密钥管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "用户 ID",
+            "name": "user_id",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.ApiKeyListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apikey/update": {
+      "post": {
+        "summary": "更新用户 API Key",
+        "description": "更新访问密钥的权限、IP 白名单或状态。",
+        "tags": [
+          "密钥管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "更新信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.UpdateApiKeyRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/asset/transfer": {
+      "post": {
+        "summary": "创建资金划转",
+        "description": "在用户的账户内进行业务单元间的资金划转。",
+        "tags": [
+          "资产管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "划转信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.TransferRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/login": {
+      "post": {
+        "summary": "用户登录",
+        "description": "绑定用户登录 Token，用于后续身份校验。",
+        "tags": [
+          "用户管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "登录信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.LoginUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/logout": {
+      "post": {
+        "summary": "用户登出",
+        "description": "清除用户登录状态。",
+        "tags": [
+          "用户管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "登出信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.LogoutUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/register": {
+      "post": {
+        "summary": "用户注册",
+        "description": "将券商侧用户 ID 映射到平台全局 UID。如果用户已存在，返回现有 UID。",
+        "tags": [
+          "用户管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.UserRegisterResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "注册信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.RegisterUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/update": {
+      "post": {
+        "summary": "更新用户信息",
+        "description": "更新用户昵称或描述信息。",
+        "tags": [
+          "用户管理"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "签名结果",
+            "name": "x-signature",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "更新信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.UpdateUserRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/auth/verify-signature": {
+      "post": {
+        "summary": "内部签名校验",
+        "description": "验证 OpenAPI 请求的 HMAC-SHA256 签名。",
+        "tags": [
+          "内部接口"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifySignatureResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "签名信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifySignatureRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/auth/verify-token": {
+      "post": {
+        "summary": "内部 Token 校验",
+        "description": "校验 Token 合法性并返回简要用户信息。",
+        "tags": [
+          "内部接口"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifyTokenResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "Token 信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifyTokenRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/broker/all": {
+      "get": {
+        "summary": "获取全部券商列表",
+        "description": "获取所有注册券商的简要列表 (ID 和名称)。",
+        "tags": [
+          "券商管理"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerAllResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/broker/list": {
+      "get": {
+        "summary": "分页获取券商列表",
+        "description": "获取所有注册券商的分页列表。",
+        "tags": [
+          "券商管理"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "页码",
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "每页数量",
+            "name": "page_size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/broker/{broker_id}": {
+      "get": {
+        "summary": "获取券商详情",
+        "description": "根据 ID 获取券商详细信息。",
+        "tags": [
+          "券商管理"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "券商 ID",
+            "name": "broker_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerInfoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inner/user/create-special": {
+      "post": {
+        "summary": "创建特殊账户 (系统/做市商)",
+        "description": "创建系统账户或做市商账户，UID 遵循特定范围且不混淆。",
+        "tags": [
+          "内部接口"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.UserRegisterResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "账户信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/internal_api.CreateSpecialUserRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
 }
