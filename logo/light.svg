@@ -4,11 +4,7 @@
     <path d="M8 28V13C8 10 10 8 13 8H23C26 8 28 10 28 13V28" fill="none" stroke="#FF5722" stroke-width="3" stroke-linecap="round"/>
     <path d="M3 33H33" stroke="#FF5722" stroke-width="2" stroke-linecap="round"/>
     
-    <!-- Text: Phoenix with personalized typography (Option 1) -->
-    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="27" letter-spacing="-0.5" y="27">
-      <tspan x="42" fill="#FF5722">Ph</tspan>
-      <tspan fill="#003159">oeni</tspan>
-      <tspan fill="#FF5722">x</tspan>
-    </text>
+    <!-- Text: Phoenix with personalized typography (All Orange) -->
+    <text x="42" y="27" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="27" letter-spacing="-0.5" fill="#FF5722">Phoenix</text>
   </g>
 </svg>
