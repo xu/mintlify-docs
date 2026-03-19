@@ -1,9 +1,8 @@
-<svg width="240" height="40" viewBox="0 0 240 40" xmlns="http://www.w3.org/2000/svg">
+<svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
   <!-- Icon: A stylized gateway/arch -->
   <path d="M8 28V13C8 10 10 8 13 8H23C26 8 28 10 28 13V28" fill="none" stroke="#0070f3" stroke-width="3" stroke-linecap="round"/>
   <path d="M3 33H33" stroke="#0070f3" stroke-width="2" stroke-linecap="round"/>
   
-  <!-- Text: Broker Gateway with personalized typography -->
-  <text x="42" y="27" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5" fill="#0070f3">Broker</text>
-  <text x="115" y="27" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="400" font-size="22" letter-spacing="-0.5" fill="#003159">Gateway</text>
+  <!-- Text: Phoenix with personalized typography -->
+  <text x="42" y="27" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="24" letter-spacing="-0.5" fill="#0070f3">Phoenix</text>
 </svg>

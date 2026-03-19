@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "券商管理与用户映射服务接口文档",
-    "title": "PHX Broker Gateway 接口文档",
+    "title": "Phoenix 接口文档",
     "contact": {},
     "version": "1.0"
   },
