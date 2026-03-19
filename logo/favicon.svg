@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <path d="M8 24V12C8 9.6 9.6 8 12 8H20C22.4 8 24 9.6 24 12V24" fill="none" stroke="#0070f3" stroke-width="4" stroke-linecap="round"/>
   <path d="M4 28H28" stroke="#0070f3" stroke-width="2" stroke-linecap="round"/>
