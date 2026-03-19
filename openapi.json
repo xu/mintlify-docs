@@ -8,7 +8,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:38008/"
+      "url": "http://localhost:38008"
     }
   ],
   "paths": {
@@ -21,18 +21,22 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -41,7 +45,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.ApiKeyCreateResponse"
+                  "$ref": "#/components/schemas/ApiKeyCreateResponse"
                 }
               }
             }
@@ -53,7 +57,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.CreateApiKeyRequest"
+                "$ref": "#/components/schemas/CreateApiKeyRequest"
               }
             }
           }
@@ -69,18 +73,22 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -89,7 +97,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -101,7 +109,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.DeleteApiKeyRequest"
+                "$ref": "#/components/schemas/DeleteApiKeyRequest"
               }
             }
           }
@@ -117,11 +125,13 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "用户 ID",
             "name": "user_id",
             "in": "query",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -130,7 +140,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.ApiKeyListResponse"
+                  "$ref": "#/components/schemas/ApiKeyListResponse"
                 }
               }
             }
@@ -147,18 +157,22 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -167,7 +181,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -179,7 +193,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.UpdateApiKeyRequest"
+                "$ref": "#/components/schemas/UpdateApiKeyRequest"
               }
             }
           }
@@ -195,25 +209,31 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "integer",
             "description": "时间戳",
             "name": "x-timestamp",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "string",
             "description": "签名",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -222,7 +242,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -234,7 +254,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.TransferRequest"
+                "$ref": "#/components/schemas/TransferRequest"
               }
             }
           }
@@ -250,25 +270,31 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "integer",
             "description": "时间戳",
             "name": "x-timestamp",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -277,7 +303,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -289,7 +315,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.LoginUserRequest"
+                "$ref": "#/components/schemas/LoginUserRequest"
               }
             }
           }
@@ -305,25 +331,31 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "integer",
             "description": "时间戳",
             "name": "x-timestamp",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -332,7 +364,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -344,7 +376,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.LogoutUserRequest"
+                "$ref": "#/components/schemas/LogoutUserRequest"
               }
             }
           }
@@ -360,25 +392,31 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "integer",
             "description": "时间戳",
             "name": "x-timestamp",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -387,7 +425,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.UserRegisterResponse"
+                  "$ref": "#/components/schemas/UserRegisterResponse"
                 }
               }
             }
@@ -399,7 +437,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.RegisterUserRequest"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             }
           }
@@ -415,25 +453,31 @@
         ],
         "parameters": [
           {
-            "type": "string",
             "description": "券商 API Key",
             "name": "x-api-key",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "type": "integer",
             "description": "时间戳",
             "name": "x-timestamp",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "string",
             "description": "签名结果",
             "name": "x-signature",
             "in": "header",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -442,7 +486,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.Response"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -454,7 +498,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.UpdateUserRequest"
+                "$ref": "#/components/schemas/UpdateUserRequest"
               }
             }
           }
@@ -475,7 +519,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifySignatureResponse"
+                  "$ref": "#/components/schemas/VerifySignatureResponse"
                 }
               }
             }
@@ -487,7 +531,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifySignatureRequest"
+                "$ref": "#/components/schemas/VerifySignatureRequest"
               }
             }
           }
@@ -508,7 +552,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifyTokenResponse"
+                  "$ref": "#/components/schemas/VerifyTokenResponse"
                 }
               }
             }
@@ -520,7 +564,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifyTokenRequest"
+                "$ref": "#/components/schemas/VerifyTokenRequest"
               }
             }
           }
@@ -541,7 +585,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerAllResponse"
+                  "$ref": "#/components/schemas/BrokerAllResponse"
                 }
               }
             }
@@ -558,16 +602,20 @@
         ],
         "parameters": [
           {
-            "type": "integer",
             "description": "页码",
             "name": "page",
-            "in": "query"
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
           },
           {
-            "type": "integer",
             "description": "每页数量",
             "name": "page_size",
-            "in": "query"
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -576,7 +624,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerListResponse"
+                  "$ref": "#/components/schemas/BrokerListResponse"
                 }
               }
             }
@@ -593,11 +641,13 @@
         ],
         "parameters": [
           {
-            "type": "integer",
             "description": "券商 ID",
             "name": "broker_id",
             "in": "path",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -606,7 +656,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerInfoResponse"
+                  "$ref": "#/components/schemas/BrokerInfoResponse"
                 }
               }
             }
@@ -628,7 +678,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/phx-broker-gateway_internal_model.UserRegisterResponse"
+                  "$ref": "#/components/schemas/UserRegisterResponse"
                 }
               }
             }
@@ -640,7 +690,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/internal_api.CreateSpecialUserRequest"
+                "$ref": "#/components/schemas/CreateSpecialUserRequest"
               }
             }
           }
@@ -650,7 +700,7 @@
   },
   "components": {
     "schemas": {
-      "internal_api.CreateApiKeyRequest": {
+      "CreateApiKeyRequest": {
         "type": "object",
         "required": [
           "user_id"
@@ -683,7 +733,7 @@
           }
         }
       },
-      "internal_api.CreateSpecialUserRequest": {
+      "CreateSpecialUserRequest": {
         "type": "object",
         "required": [
           "broker_id",
@@ -706,7 +756,7 @@
           }
         }
       },
-      "internal_api.DeleteApiKeyRequest": {
+      "DeleteApiKeyRequest": {
         "type": "object",
         "required": [
           "api_key"
@@ -719,7 +769,7 @@
           }
         }
       },
-      "internal_api.LoginUserRequest": {
+      "LoginUserRequest": {
         "type": "object",
         "required": [
           "token",
@@ -738,7 +788,7 @@
           }
         }
       },
-      "internal_api.LogoutUserRequest": {
+      "LogoutUserRequest": {
         "type": "object",
         "required": [
           "user_id"
@@ -751,7 +801,7 @@
           }
         }
       },
-      "internal_api.RegisterUserRequest": {
+      "RegisterUserRequest": {
         "type": "object",
         "required": [
           "user_id"
@@ -774,7 +824,7 @@
           }
         }
       },
-      "internal_api.TransferRequest": {
+      "TransferRequest": {
         "type": "object",
         "required": [
           "amount",
@@ -820,7 +870,7 @@
           }
         }
       },
-      "internal_api.UpdateApiKeyRequest": {
+      "UpdateApiKeyRequest": {
         "type": "object",
         "required": [
           "api_key"
@@ -858,7 +908,7 @@
           }
         }
       },
-      "internal_api.UpdateUserRequest": {
+      "UpdateUserRequest": {
         "type": "object",
         "required": [
           "user_id"
@@ -881,7 +931,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.ApiKeyCreateResponse": {
+      "ApiKeyCreateResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -889,7 +939,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.ApiKeyCreateResponseData"
+            "$ref": "#/components/schemas/ApiKeyCreateResponseData"
           },
           "message": {
             "type": "string",
@@ -897,14 +947,14 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.ApiKeyCreateResponseData": {
+      "ApiKeyCreateResponseData": {
         "type": "object",
         "properties": {
           "key": {
             "description": "API Key 详细信息",
             "allOf": [
               {
-                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerUserApiKey"
+                "$ref": "#/components/schemas/BrokerUserApiKey"
               }
             ]
           },
@@ -915,7 +965,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.ApiKeyListResponse": {
+      "ApiKeyListResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -925,7 +975,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerUserApiKey"
+              "$ref": "#/components/schemas/BrokerUserApiKey"
             }
           },
           "message": {
@@ -934,7 +984,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerAllResponse": {
+      "BrokerAllResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -954,7 +1004,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerInfo": {
+      "BrokerInfo": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -1002,7 +1052,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerInfoResponse": {
+      "BrokerInfoResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -1010,7 +1060,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerInfo"
+            "$ref": "#/components/schemas/BrokerInfo"
           },
           "message": {
             "type": "string",
@@ -1018,7 +1068,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerListResponse": {
+      "BrokerListResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -1026,7 +1076,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerListResponseData"
+            "$ref": "#/components/schemas/BrokerListResponseData"
           },
           "message": {
             "type": "string",
@@ -1034,14 +1084,14 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerListResponseData": {
+      "BrokerListResponseData": {
         "type": "object",
         "properties": {
           "list": {
             "description": "券商信息列表",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/phx-broker-gateway_internal_model.BrokerInfo"
+              "$ref": "#/components/schemas/BrokerInfo"
             }
           },
           "total": {
@@ -1051,7 +1101,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.BrokerUserApiKey": {
+      "BrokerUserApiKey": {
         "type": "object",
         "properties": {
           "api_key": {
@@ -1114,7 +1164,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.Response": {
+      "Response": {
         "type": "object",
         "properties": {
           "code": {
@@ -1132,7 +1182,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.SimpleUserDTO": {
+      "SimpleUserDTO": {
         "type": "object",
         "properties": {
           "id": {
@@ -1152,7 +1202,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.UserRegisterResponse": {
+      "UserRegisterResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -1160,7 +1210,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.UserRegisterResponseData"
+            "$ref": "#/components/schemas/UserRegisterResponseData"
           },
           "message": {
             "type": "string",
@@ -1168,7 +1218,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.UserRegisterResponseData": {
+      "UserRegisterResponseData": {
         "type": "object",
         "properties": {
           "uid": {
@@ -1178,7 +1228,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifySignatureRequest": {
+      "VerifySignatureRequest": {
         "type": "object",
         "required": [
           "apiKey",
@@ -1225,7 +1275,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifySignatureResponse": {
+      "VerifySignatureResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -1233,7 +1283,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifySignatureResponseData"
+            "$ref": "#/components/schemas/VerifySignatureResponseData"
           },
           "message": {
             "type": "string",
@@ -1241,7 +1291,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifySignatureResponseData": {
+      "VerifySignatureResponseData": {
         "type": "object",
         "properties": {
           "authorities": {
@@ -1266,7 +1316,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifyTokenRequest": {
+      "VerifyTokenRequest": {
         "type": "object",
         "required": [
           "token"
@@ -1279,7 +1329,7 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifyTokenResponse": {
+      "VerifyTokenResponse": {
         "type": "object",
         "properties": {
           "code": {
@@ -1287,7 +1337,7 @@
             "example": 200
           },
           "data": {
-            "$ref": "#/components/schemas/phx-broker-gateway_internal_model.VerifyTokenResponseData"
+            "$ref": "#/components/schemas/VerifyTokenResponseData"
           },
           "message": {
             "type": "string",
@@ -1295,14 +1345,14 @@
           }
         }
       },
-      "phx-broker-gateway_internal_model.VerifyTokenResponseData": {
+      "VerifyTokenResponseData": {
         "type": "object",
         "properties": {
           "user": {
             "description": "用户基本信息",
             "allOf": [
               {
-                "$ref": "#/components/schemas/phx-broker-gateway_internal_model.SimpleUserDTO"
+                "$ref": "#/components/schemas/SimpleUserDTO"
               }
             ]
           }
