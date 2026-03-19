@@ -34,6 +34,7 @@
         {
           "group": "资产",
           "pages": [
+            "api-reference/asset/balance",
             "api-reference/asset/transfer"
           ]
         },

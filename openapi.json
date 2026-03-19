@@ -209,6 +209,67 @@
         }
       }
     },
+    "/api/v1/asset/balance": {
+      "post": {
+        "summary": "查询用户资产余额",
+        "description": "查询指定用户在平台上的实时资产余额列表。",
+        "tags": [
+          "资产管理"
+        ],
+        "parameters": [
+          {
+            "description": "券商 API Key",
+            "name": "x-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "时间戳",
+            "name": "x-timestamp",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "签名",
+            "name": "x-signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetBalanceResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "查询信息",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssetBalanceRequest"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/asset/transfer": {
       "post": {
         "summary": "创建资金划转",
@@ -709,6 +770,73 @@
   },
   "components": {
     "schemas": {
+      "AssetBalanceRequest": {
+        "type": "object",
+        "required": [
+          "user_id"
+        ],
+        "properties": {
+          "currency": {
+            "description": "币种 (可选，不传返回全部)",
+            "type": "string",
+            "example": "USDT"
+          },
+          "user_id": {
+            "description": "券商侧用户 ID",
+            "type": "string",
+            "example": "user_01"
+          }
+        }
+      },
+      "AssetBalanceResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetBalanceItem"
+            }
+          },
+          "message": {
+            "type": "string",
+            "example": "成功"
+          }
+        }
+      },
+      "AssetBalanceItem": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "description": "可用余额",
+            "type": "string",
+            "example": "800.00"
+          },
+          "balance": {
+            "description": "总余额",
+            "type": "string",
+            "example": "1000.50"
+          },
+          "currency": {
+            "description": "币种",
+            "type": "string",
+            "example": "USDT"
+          },
+          "equity": {
+            "description": "账户权益",
+            "type": "string",
+            "example": "1000.50"
+          },
+          "frozen": {
+            "description": "冻结金额",
+            "type": "string",
+            "example": "200.50"
+          }
+        }
+      },
       "CreateApiKeyRequest": {
         "type": "object",
         "required": [
