@@ -1,0 +1,44 @@
+---
+title: "鉴权说明"
+---
+
+所有发往 Broker Gateway 的 OpenAPI 请求必须在 Header 中包含签名信息，以确保请求的安全性和不可篡改性。
+
+## 核心 Header 字段
+
+| 字段名 | 说明 | 示例 |
+| :--- | :--- | :--- |
+| `x-api-key` | 券商或用户的 API Key | `7007b96cf748fdd0` |
+| `x-timestamp` | 请求时间戳（秒或毫秒） | `1689584042` |
+| `x-signature` | HMAC-SHA256 签名结果 | `2a8b...` |
+
+## 签名计算流程
+
+### 1. 构建待签名字符串 (Payload)
+待签名字符串由 `Timestamp`, `Method`, `Path`, `Query`, `Body` 直接拼接而成：
+`Timestamp + Method + Path + [?Query] + Body`
+
+- **Timestamp**: Header 中的时间戳（毫秒或秒，需与 Header 传参一致）。
+- **Method**: HTTP 方法名（全大写，如 `POST`, `GET`）。
+- **Path**: 请求路径（不含域名，如 `/api/v1/user/login`）。
+- **Query**: 请求参数（如果有 `?` 后面的内容，需包含 `?` 本身，如 `?user_id=123`；若无则为空）。
+- **Body**: 请求体原始 JSON 字符串（GET 请求或无 Body 时为空字符串）。
+
+### 2. 计算签名
+使用您的 **API Secret** 作为密钥，对待签名字符串进行 **HMAC-SHA256** 哈希计算，结果进行 **Base64** 编码。
+
+## 代码示例 (Go)
+
+```go
+func CalculateSignature(secret, timestamp, method, path, query, body string) string {
+    payload := timestamp + method + path
+    if query != "" {
+        payload += "?" + query
+    }
+    payload += body
+
+    h := hmac.New(sha256.New, []byte(secret))
+    h.Write([]byte(payload))
+    return base64.StdEncoding.EncodeToString(h.Sum(nil))
+}
+```
