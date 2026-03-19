@@ -1,0 +1,8 @@
+<svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon: A stylized gateway/arch -->
+  <path d="M10 30V15C10 12 12 10 15 10H25C28 10 30 12 30 15V30" fill="none" stroke="#3291ff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M5 35H35" stroke="#3291ff" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Text: Broker Gateway -->
+  <text x="45" y="27" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#FFFFFF">Broker Gateway</text>
+</svg>

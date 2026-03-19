@@ -7,7 +7,7 @@
     "light": "#3291ff",
     "dark": "#003159"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
@@ -64,8 +64,8 @@
     }
   },
   "logo": {
-    "light": "/logo-light.svg",
-    "dark": "/logo-dark.svg"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
   },
   "openapi": "openapi.json",
   "contextual": {
