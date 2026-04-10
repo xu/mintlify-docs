@@ -2,31 +2,31 @@
 title: "接入指南"
 ---
 
-欢迎使用 Phoenix 接口文档。本文档专门为券商（Broker）提供与 Phoenix 交易系统对接的完整技术支持。
+欢迎使用 Dcore 接口文档。本文档专门为券商（Broker）提供与 Dcore 交易系统对接的完整技术支持。
 
 通过本文档，您可以实现：
-1. **用户同步**: 将您的用户系统映射到Phoenix核心交易。
+1. **用户同步**: 将您的用户系统映射到 Dcore 核心交易。
 2. **资产划转**: 实现券商账户与交易平台之间的实时资金划拨。
 3. **API Key**: 为您的终端用户生成和管理交易所需的访问密钥。
 
 
 ## 用户接入流程
 
-以下是用户通过券商接入 Phoenix 核心交易的流程图：
+以下是用户通过券商接入 Dcore 核心交易的流程图：
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor User as 用户
     participant Broker as Broker券商
-    participant Phoenix as Phoenix核心交易
+    participant Dcore as Dcore核心交易
 
     User->>Broker: 用户登录Broker
-    Note over Broker, Phoenix: 调用登录接口
-    Broker->>Phoenix: 用户登录 (/api/v1/user/login)
-    Phoenix-->>Broker: 返回跳转URL
+    Note over Broker, Dcore: 调用登录接口
+    Broker->>Dcore: 用户登录 (/api/v1/user/login)
+    Dcore-->>Broker: 返回跳转URL
     Broker-->>User: 登录成功
-    User->>Phoenix: 通过跳转URL直连Phoenix核心交易
+    User->>Dcore: 通过跳转URL直连Dcore核心交易
 ```
 
 ## API 网关地址
@@ -35,8 +35,7 @@ sequenceDiagram
 
 | 环境 | 网关地址 |
 | :--- | :--- |
-| **生产环境** | `https://api.phoenix.io` |
-| **测试环境** | `https://api-test.phoenix.io` |
+| **测试环境** | `http://10.10.1.10:38008` |
 
 ## 快速导航
 

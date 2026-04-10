@@ -2,22 +2,14 @@
   "openapi": "3.0.0",
   "info": {
     "description": "券商管理与用户映射服务接口文档",
-    "title": "Phoenix 接口文档",
+    "title": "Dcore 接口文档",
     "contact": {},
     "version": "1.0"
   },
   "servers": [
     {
-      "url": "https://api.phoenix.io",
-      "description": "生产环境"
-    },
-    {
-      "url": "https://api-test.phoenix.io",
+      "url": "http://10.10.1.10:38008",
       "description": "测试环境"
-    },
-    {
-      "url": "http://localhost:38008",
-      "description": "本地开发环境"
     }
   ],
   "paths": {
