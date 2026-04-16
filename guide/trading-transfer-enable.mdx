@@ -1,0 +1,47 @@
+---
+title: "交易页开启划转"
+---
+
+本文说明如何在平台交易页开启“资产查询/划转”能力，以及券商侧需要满足的接口标准。
+
+## 开启步骤
+
+1. 在 `broker_info` 配置券商基础信息与开关。  
+2. 打开 `enable_transfer=true`。  
+3. 配置查询与划转 webhook：
+   - `query_webhook_url`
+   - `transfer_webhook_url`
+4. 确认 `api-trade -> broker-gateway -> 券商侧(phx-trade-api)` 链路可达。  
+
+## 接口标准
+
+平台交易页能力依赖 `broker-gateway` 的内部资产接口（由 `api-trade` 调用）：
+
+### 1) 查询资产
+
+- 方法与路径：`GET /inner/broker/asset/balance`
+- 请求参数（query）：
+  - `broker_id`：券商 ID，必填
+  - `uid`：用户 UID，必填
+  - `currency`：币种，可选
+- 返回：统一结构 `code/message/data`
+
+### 2) 发起划转
+
+- 方法与路径：`POST /inner/broker/asset/transfer`
+- 请求参数（body）：
+  - `broker_id`：券商 ID，必填
+  - `uid`：用户 UID，必填
+  - `amount`：划转数量，必填
+  - `currency`：币种，必填
+  - `fromBiz`：来源账户，必填
+  - `toBiz`：目标账户，必填
+- 返回：统一结构 `code/message/data`
+
+## 券商侧实现要求
+
+- 券商侧需实现“资产查询 + 划转”能力，并通过上面的 webhook 对外提供。  
+- 建议在券商侧 `phx-trade-api` 内部继续调用资管/划转服务，不把内部服务细节暴露给平台。  
+- 若券商侧有 B2B 安全要求，建议采用：
+  - IP 白名单
+  - AK/SK 签名头：`x-api-key`、`x-timestamp`、`x-signature`

@@ -15,6 +15,7 @@
       "group": "接入指南",
       "pages": [
         "guide/introduction",
+        "guide/trading-transfer-enable",
         "guide/authentication",
         "guide/response"
       ]
