@@ -36,7 +36,8 @@
           "group": "资产",
           "pages": [
             "api-reference/asset/balance",
-            "api-reference/asset/transfer"
+            "api-reference/asset/transfer",
+            "api-reference/asset/currencies"
           ]
         },
         {
@@ -46,6 +47,26 @@
             "api-reference/apikey/list-apikey",
             "api-reference/apikey/update-apikey",
             "api-reference/apikey/delete-apikey"
+          ]
+        },
+        {
+          "group": "现货",
+          "pages": [
+            "api-reference/trade/spot/orders-pending",
+            "api-reference/trade/spot/orders-history",
+            "api-reference/trade/spot/fills"
+          ]
+        },
+        {
+          "group": "合约",
+          "pages": [
+            "api-reference/trade/futures/positions",
+            "api-reference/trade/futures/orders-pending",
+            "api-reference/trade/futures/orders-history",
+            "api-reference/trade/futures/fills",
+            "api-reference/trade/futures/algo-orders-pending",
+            "api-reference/trade/futures/positions-history",
+            "api-reference/trade/futures/bills"
           ]
         }
       ]

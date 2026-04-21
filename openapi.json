@@ -103,7 +103,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -187,7 +212,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -327,7 +377,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -388,7 +465,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -455,7 +557,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -578,7 +707,31 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -693,7 +846,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -840,7 +1020,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -987,7 +1194,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1102,7 +1336,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1193,7 +1454,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1316,7 +1604,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1463,7 +1778,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1610,7 +1952,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1725,7 +2094,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1786,7 +2182,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1847,7 +2268,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -1969,7 +2415,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -2103,7 +2574,34 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": true
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": [],
+                                    "message": "成功"
                                 }
                             }
                         }
@@ -2135,7 +2633,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/model.Response"
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "data",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true,
+                                            "additionalProperties": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "成功"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "code": 200,
+                                    "data": {},
+                                    "message": "成功"
                                 }
                             }
                         }
