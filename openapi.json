@@ -377,34 +377,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.AssetCurrenciesResponse"
                                 }
                             }
                         }
@@ -465,32 +438,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "object",
-                                            "nullable": true,
-                                            "additionalProperties": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": {},
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.AssetTransferResponse"
                                 }
                             }
                         }
@@ -557,34 +505,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeAssetBalanceResponse"
                                 }
                             }
                         }
@@ -707,31 +628,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "object",
-                                            "additionalProperties": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": {},
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeAlgoOrdersPendingResponse"
                                 }
                             }
                         }
@@ -846,34 +743,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeBillsResponse"
                                 }
                             }
                         }
@@ -1020,34 +890,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeFillsResponse"
                                 }
                             }
                         }
@@ -1194,34 +1037,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeOrdersHistoryResponse"
                                 }
                             }
                         }
@@ -1336,34 +1152,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeOrdersPendingResponse"
                                 }
                             }
                         }
@@ -1454,34 +1243,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradePositionsResponse"
                                 }
                             }
                         }
@@ -1604,34 +1366,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradePositionsHistoryResponse"
                                 }
                             }
                         }
@@ -1778,34 +1513,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeFillsResponse"
                                 }
                             }
                         }
@@ -1952,34 +1660,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeOrdersHistoryResponse"
                                 }
                             }
                         }
@@ -2094,34 +1775,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "data",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": true
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "成功"
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "code": 200,
-                                    "data": [],
-                                    "message": "成功"
+                                    "$ref": "#/components/schemas/model.TradeOrdersPendingResponse"
                                 }
                             }
                         }
@@ -3455,6 +3109,80 @@
                     }
                 }
             },
+            "model.AssetCurrenciesResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.AssetCurrencyInfo"
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.AssetCurrencyInfo": {
+                "type": "object",
+                "properties": {
+                    "currency": {
+                        "description": "币种简称",
+                        "type": "string"
+                    },
+                    "currencyFullName": {
+                        "description": "币种全称",
+                        "type": "string"
+                    },
+                    "currencyId": {
+                        "description": "币种 ID",
+                        "type": "integer"
+                    },
+                    "logo": {
+                        "description": "币种图标地址",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "币种类型（如 crypto）",
+                        "type": "string"
+                    },
+                    "viewPrecision": {
+                        "description": "展示精度",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.AssetTransferData": {
+                "type": "object",
+                "properties": {
+                    "order_id": {
+                        "description": "订单ID",
+                        "type": "string",
+                        "example": "202604120001"
+                    }
+                }
+            },
+            "model.AssetTransferResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.AssetTransferData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
             "model.BrokerAllResponse": {
                 "type": "object",
                 "properties": {
@@ -3785,6 +3513,1034 @@
                         "description": "用户名",
                         "type": "string",
                         "example": "Tester"
+                    }
+                }
+            },
+            "model.TradeAlgoOrderItem": {
+                "type": "object",
+                "properties": {
+                    "algoClOrderId": {
+                        "description": "策略单自定义 ID",
+                        "type": "string"
+                    },
+                    "algoOrdSide": {
+                        "description": "策略单方向",
+                        "type": "string"
+                    },
+                    "algoOrdType": {
+                        "description": "策略单类型",
+                        "type": "string"
+                    },
+                    "algoOrderId": {
+                        "description": "策略单 ID",
+                        "type": "string"
+                    },
+                    "cTime": {
+                        "description": "创建时间",
+                        "type": "integer"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "instType": {
+                        "description": "产品类型",
+                        "type": "string"
+                    },
+                    "lever": {
+                        "description": "杠杆",
+                        "type": "string"
+                    },
+                    "marginType": {
+                        "description": "保证金模式",
+                        "type": "string"
+                    },
+                    "ordPx": {
+                        "description": "委托价",
+                        "type": "string"
+                    },
+                    "ordSz": {
+                        "description": "委托数量",
+                        "type": "string"
+                    },
+                    "orderIds": {
+                        "description": "触发后订单 ID 列表",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    },
+                    "postOnly": {
+                        "description": "只做 maker",
+                        "type": "boolean"
+                    },
+                    "reduceOnly": {
+                        "description": "只减仓",
+                        "type": "boolean"
+                    },
+                    "side": {
+                        "description": "买卖方向",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "订单状态",
+                        "type": "string"
+                    },
+                    "timeInForce": {
+                        "description": "有效方式",
+                        "type": "string"
+                    },
+                    "triggerPx": {
+                        "description": "触发价格",
+                        "type": "string"
+                    },
+                    "triggerPxType": {
+                        "description": "触发价格类型",
+                        "type": "string"
+                    },
+                    "triggerTime": {
+                        "description": "触发时间",
+                        "type": "integer"
+                    },
+                    "uTime": {
+                        "description": "更新时间",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.TradeAlgoOrdersPendingResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeAlgoOrderItem"
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradeAssetBalanceData": {
+                "type": "object",
+                "properties": {
+                    "details": {
+                        "description": "币种资产明细",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeAssetBalanceDetail"
+                        }
+                    },
+                    "isoPositions": {
+                        "description": "逐仓仓位明细",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeIsolatePositionDetail"
+                        }
+                    }
+                }
+            },
+            "model.TradeAssetBalanceDetail": {
+                "type": "object",
+                "properties": {
+                    "availBal": {
+                        "description": "可用余额",
+                        "type": "string"
+                    },
+                    "availWithdrawBal": {
+                        "description": "最大可转出余额",
+                        "type": "string"
+                    },
+                    "bal": {
+                        "description": "账户余额",
+                        "type": "string"
+                    },
+                    "ccy": {
+                        "description": "币种",
+                        "type": "string"
+                    },
+                    "crossOrdFrozen": {
+                        "description": "全仓挂单冻结",
+                        "type": "string"
+                    },
+                    "eq": {
+                        "description": "币种总权益",
+                        "type": "string"
+                    },
+                    "isoOrdFrozen": {
+                        "description": "逐仓挂单冻结",
+                        "type": "string"
+                    },
+                    "marginRate": {
+                        "description": "币种全仓保证金率",
+                        "type": "string"
+                    },
+                    "mmr": {
+                        "description": "全仓维持保证金",
+                        "type": "string"
+                    },
+                    "pnl": {
+                        "description": "累计盈亏",
+                        "type": "string"
+                    },
+                    "spotOrdFrozen": {
+                        "description": "现货挂单冻结",
+                        "type": "string"
+                    },
+                    "transferFrozen": {
+                        "description": "划转冻结",
+                        "type": "string"
+                    },
+                    "upl": {
+                        "description": "未实现盈亏",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradeAssetBalanceResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.TradeAssetBalanceData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradeBillItem": {
+                "type": "object",
+                "properties": {
+                    "bal": {
+                        "description": "余额",
+                        "type": "string"
+                    },
+                    "balChg": {
+                        "description": "余额变动",
+                        "type": "string"
+                    },
+                    "billId": {
+                        "description": "流水 ID",
+                        "type": "string"
+                    },
+                    "cTime": {
+                        "description": "创建时间",
+                        "type": "string"
+                    },
+                    "ccy": {
+                        "description": "币种",
+                        "type": "string"
+                    },
+                    "from": {
+                        "description": "来源",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "记录 ID",
+                        "type": "integer"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "instType": {
+                        "description": "产品类型",
+                        "type": "string"
+                    },
+                    "notes": {
+                        "description": "备注",
+                        "type": "string"
+                    },
+                    "subType": {
+                        "description": "子类型",
+                        "type": "string"
+                    },
+                    "to": {
+                        "description": "去向",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "流水类型",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradeBillsPageData": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "description": "数据列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeBillItem"
+                        }
+                    },
+                    "pageNum": {
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    "pageSize": {
+                        "description": "每页条数",
+                        "type": "integer"
+                    },
+                    "totalPage": {
+                        "description": "总页数",
+                        "type": "integer"
+                    },
+                    "totalSize": {
+                        "description": "总条数",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.TradeBillsResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.TradeBillsPageData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradeFillsItem": {
+                "type": "object",
+                "properties": {
+                    "baseCcy": {
+                        "description": "基础币",
+                        "type": "string"
+                    },
+                    "billId": {
+                        "description": "账单 ID",
+                        "type": "string"
+                    },
+                    "cTime": {
+                        "description": "创建时间",
+                        "type": "string"
+                    },
+                    "clOrdId": {
+                        "description": "客户端订单 ID",
+                        "type": "string"
+                    },
+                    "execType": {
+                        "description": "执行类型",
+                        "type": "string"
+                    },
+                    "fee": {
+                        "description": "手续费",
+                        "type": "string"
+                    },
+                    "feeCcy": {
+                        "description": "手续费币种",
+                        "type": "string"
+                    },
+                    "fillPnl": {
+                        "description": "成交盈亏",
+                        "type": "string"
+                    },
+                    "fillPx": {
+                        "description": "成交价",
+                        "type": "string"
+                    },
+                    "fillSz": {
+                        "description": "成交量",
+                        "type": "string"
+                    },
+                    "fillTime": {
+                        "description": "成交时间",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "记录 ID",
+                        "type": "string"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "instType": {
+                        "description": "产品类型",
+                        "type": "string"
+                    },
+                    "liqRole": {
+                        "description": "流动性角色",
+                        "type": "string"
+                    },
+                    "ordId": {
+                        "description": "订单 ID",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    },
+                    "quoteCcy": {
+                        "description": "计价币",
+                        "type": "string"
+                    },
+                    "side": {
+                        "description": "买卖方向",
+                        "type": "string"
+                    },
+                    "tag": {
+                        "description": "标签",
+                        "type": "string"
+                    },
+                    "tradeId": {
+                        "description": "成交 ID",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradeFillsPageData": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "description": "数据列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeFillsItem"
+                        }
+                    },
+                    "pageNum": {
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    "pageSize": {
+                        "description": "每页条数",
+                        "type": "integer"
+                    },
+                    "totalPage": {
+                        "description": "总页数",
+                        "type": "integer"
+                    },
+                    "totalSize": {
+                        "description": "总条数",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.TradeFillsResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.TradeFillsPageData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradeIsolatePositionDetail": {
+                "type": "object",
+                "properties": {
+                    "eq": {
+                        "description": "仓位权益",
+                        "type": "string"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "lever": {
+                        "description": "杠杆",
+                        "type": "string"
+                    },
+                    "marginRate": {
+                        "description": "保证金率",
+                        "type": "string"
+                    },
+                    "mmrRate": {
+                        "description": "维持保证金率",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradeOrderHistoryPageData": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "description": "数据列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeOrderQueryItem"
+                        }
+                    },
+                    "pageNum": {
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    "pageSize": {
+                        "description": "每页条数",
+                        "type": "integer"
+                    },
+                    "totalPage": {
+                        "description": "总页数",
+                        "type": "integer"
+                    },
+                    "totalSize": {
+                        "description": "总条数",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.TradeOrderQueryItem": {
+                "type": "object",
+                "properties": {
+                    "accFillSz": {
+                        "description": "累计成交量",
+                        "type": "string"
+                    },
+                    "algoClOrdId": {
+                        "description": "策略单客户端 ID",
+                        "type": "string"
+                    },
+                    "algoId": {
+                        "description": "策略单 ID",
+                        "type": "string"
+                    },
+                    "avgPx": {
+                        "description": "平均成交价",
+                        "type": "string"
+                    },
+                    "baseCcy": {
+                        "description": "基础币",
+                        "type": "string"
+                    },
+                    "cTime": {
+                        "description": "创建时间",
+                        "type": "string"
+                    },
+                    "cancelSource": {
+                        "description": "撤单来源",
+                        "type": "string"
+                    },
+                    "cancelSourceReason": {
+                        "description": "撤单原因",
+                        "type": "string"
+                    },
+                    "ccy": {
+                        "description": "保证金币种",
+                        "type": "string"
+                    },
+                    "clOrdId": {
+                        "description": "客户端订单 ID",
+                        "type": "string"
+                    },
+                    "fee": {
+                        "description": "手续费",
+                        "type": "string"
+                    },
+                    "feeCcy": {
+                        "description": "手续费币种",
+                        "type": "string"
+                    },
+                    "fillNotional": {
+                        "description": "成交名义价值",
+                        "type": "string"
+                    },
+                    "fillPx": {
+                        "description": "最新成交价",
+                        "type": "string"
+                    },
+                    "fillSz": {
+                        "description": "最新成交量",
+                        "type": "string"
+                    },
+                    "fillTime": {
+                        "description": "最新成交时间",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "记录 ID",
+                        "type": "string"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "instType": {
+                        "description": "产品类型",
+                        "type": "string"
+                    },
+                    "lever": {
+                        "description": "杠杆",
+                        "type": "string"
+                    },
+                    "markPx": {
+                        "description": "标记价格",
+                        "type": "string"
+                    },
+                    "notional": {
+                        "description": "订单名义价值",
+                        "type": "string"
+                    },
+                    "ordId": {
+                        "description": "订单 ID",
+                        "type": "string"
+                    },
+                    "ordPx": {
+                        "description": "策略单委托价",
+                        "type": "string"
+                    },
+                    "ordType": {
+                        "description": "订单类型",
+                        "type": "string"
+                    },
+                    "orderId": {
+                        "description": "订单 ID（兼容字段）",
+                        "type": "string"
+                    },
+                    "orderSource": {
+                        "description": "订单来源",
+                        "type": "integer"
+                    },
+                    "pnl": {
+                        "description": "盈亏",
+                        "type": "string"
+                    },
+                    "pnlRatio": {
+                        "description": "盈亏率",
+                        "type": "string"
+                    },
+                    "posId": {
+                        "description": "持仓 ID",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    },
+                    "px": {
+                        "description": "委托价格",
+                        "type": "string"
+                    },
+                    "quoteCcy": {
+                        "description": "计价币",
+                        "type": "string"
+                    },
+                    "reduceOnly": {
+                        "description": "是否只减仓",
+                        "type": "boolean"
+                    },
+                    "side": {
+                        "description": "买卖方向",
+                        "type": "string"
+                    },
+                    "slOrdPx": {
+                        "description": "止损委托价",
+                        "type": "string"
+                    },
+                    "slTriggerPx": {
+                        "description": "止损触发价",
+                        "type": "string"
+                    },
+                    "slTriggerPxType": {
+                        "description": "止损触发类型",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "订单状态",
+                        "type": "string"
+                    },
+                    "sz": {
+                        "description": "委托数量",
+                        "type": "string"
+                    },
+                    "tdMode": {
+                        "description": "交易模式",
+                        "type": "string"
+                    },
+                    "tgtCcy": {
+                        "description": "目标计价币",
+                        "type": "string"
+                    },
+                    "timeInForce": {
+                        "description": "有效方式",
+                        "type": "string"
+                    },
+                    "tpOrdPx": {
+                        "description": "止盈委托价",
+                        "type": "string"
+                    },
+                    "tpTriggerPx": {
+                        "description": "止盈触发价",
+                        "type": "string"
+                    },
+                    "tpTriggerPxType": {
+                        "description": "止盈触发类型",
+                        "type": "string"
+                    },
+                    "triggerPrice": {
+                        "description": "触发价格",
+                        "type": "string"
+                    },
+                    "triggerType": {
+                        "description": "触发类型",
+                        "type": "string"
+                    },
+                    "uTime": {
+                        "description": "更新时间",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradeOrdersHistoryResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.TradeOrderHistoryPageData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradeOrdersPendingResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradeOrderQueryItem"
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradePositionHistoryItem": {
+                "type": "object",
+                "properties": {
+                    "avgEntryPrice": {
+                        "description": "开仓均价",
+                        "type": "string"
+                    },
+                    "avgExitPrice": {
+                        "description": "平仓均价",
+                        "type": "string"
+                    },
+                    "baseCcy": {
+                        "description": "基础币",
+                        "type": "string"
+                    },
+                    "closeTime": {
+                        "description": "平仓时间",
+                        "type": "integer"
+                    },
+                    "commission": {
+                        "description": "手续费",
+                        "type": "string"
+                    },
+                    "fundingFee": {
+                        "description": "资金费",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "记录 ID",
+                        "type": "integer"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "leverage": {
+                        "description": "杠杆",
+                        "type": "string"
+                    },
+                    "liquidateAmt": {
+                        "description": "强平数量",
+                        "type": "string"
+                    },
+                    "liquidateMarkPrice": {
+                        "description": "强平标记价",
+                        "type": "string"
+                    },
+                    "liquidatePrice": {
+                        "description": "强平成交价",
+                        "type": "string"
+                    },
+                    "liquidateTime": {
+                        "description": "强平时间",
+                        "type": "integer"
+                    },
+                    "liquidationFee": {
+                        "description": "强平手续费",
+                        "type": "string"
+                    },
+                    "openTime": {
+                        "description": "开仓时间",
+                        "type": "integer"
+                    },
+                    "penaltyFee": {
+                        "description": "罚金",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    },
+                    "positionAmt": {
+                        "description": "持仓金额",
+                        "type": "string"
+                    },
+                    "positionId": {
+                        "description": "仓位 ID",
+                        "type": "string"
+                    },
+                    "positionQty": {
+                        "description": "持仓数量",
+                        "type": "string"
+                    },
+                    "positionStatus": {
+                        "description": "仓位状态",
+                        "type": "integer"
+                    },
+                    "quoteCcy": {
+                        "description": "计价币",
+                        "type": "string"
+                    },
+                    "realProfit": {
+                        "description": "已实现盈亏",
+                        "type": "string"
+                    },
+                    "side": {
+                        "description": "开平方向",
+                        "type": "string"
+                    },
+                    "tdMode": {
+                        "description": "保证金模式",
+                        "type": "string"
+                    },
+                    "tradeFee": {
+                        "description": "交易费",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradePositionHistoryPageData": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "description": "数据列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradePositionHistoryItem"
+                        }
+                    },
+                    "pageNum": {
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    "pageSize": {
+                        "description": "每页条数",
+                        "type": "integer"
+                    },
+                    "totalPage": {
+                        "description": "总页数",
+                        "type": "integer"
+                    },
+                    "totalSize": {
+                        "description": "总条数",
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.TradePositionItem": {
+                "type": "object",
+                "properties": {
+                    "adlLevel": {
+                        "description": "自动减仓等级",
+                        "type": "integer"
+                    },
+                    "availPos": {
+                        "description": "可平仓数量",
+                        "type": "string"
+                    },
+                    "avgPx": {
+                        "description": "开仓平均价",
+                        "type": "string"
+                    },
+                    "cTime": {
+                        "description": "持仓创建时间",
+                        "type": "integer"
+                    },
+                    "idxPx": {
+                        "description": "指数价格",
+                        "type": "string"
+                    },
+                    "instId": {
+                        "description": "产品 ID",
+                        "type": "string"
+                    },
+                    "instType": {
+                        "description": "产品类型",
+                        "type": "string"
+                    },
+                    "lastPx": {
+                        "description": "最新成交价",
+                        "type": "string"
+                    },
+                    "lever": {
+                        "description": "杠杆",
+                        "type": "string"
+                    },
+                    "liqPx": {
+                        "description": "预估强平价",
+                        "type": "string"
+                    },
+                    "maintainMargin": {
+                        "description": "维持保证金",
+                        "type": "string"
+                    },
+                    "maintainMarginRate": {
+                        "description": "维持保证金率",
+                        "type": "string"
+                    },
+                    "margin": {
+                        "description": "保证金余额",
+                        "type": "string"
+                    },
+                    "marginRate": {
+                        "description": "保证金率",
+                        "type": "string"
+                    },
+                    "marginType": {
+                        "description": "保证金模式",
+                        "type": "string"
+                    },
+                    "markPx": {
+                        "description": "标记价格",
+                        "type": "string"
+                    },
+                    "pnl": {
+                        "description": "累计收益额",
+                        "type": "string"
+                    },
+                    "pos": {
+                        "description": "持仓量",
+                        "type": "string"
+                    },
+                    "posId": {
+                        "description": "持仓 ID",
+                        "type": "string"
+                    },
+                    "posMargin": {
+                        "description": "仓位占用保证金",
+                        "type": "string"
+                    },
+                    "posSide": {
+                        "description": "持仓方向",
+                        "type": "string"
+                    },
+                    "riskLevel": {
+                        "description": "风险等级",
+                        "type": "integer"
+                    },
+                    "slTriggerPx": {
+                        "description": "止损触发价",
+                        "type": "string"
+                    },
+                    "slTriggerPxType": {
+                        "description": "止损触发价类型",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "仓位状态",
+                        "type": "string"
+                    },
+                    "tpTriggerPx": {
+                        "description": "止盈触发价",
+                        "type": "string"
+                    },
+                    "tpTriggerPxType": {
+                        "description": "止盈触发价类型",
+                        "type": "string"
+                    },
+                    "uTime": {
+                        "description": "最近更新时间",
+                        "type": "integer"
+                    },
+                    "upl": {
+                        "description": "未实现收益",
+                        "type": "string"
+                    },
+                    "uplRate": {
+                        "description": "未实现收益率",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.TradePositionsHistoryResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.TradePositionHistoryPageData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.TradePositionsResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.TradePositionItem"
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
                     }
                 }
             },

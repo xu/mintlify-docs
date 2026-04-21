@@ -35,8 +35,8 @@
         {
           "group": "资产",
           "pages": [
-            "api-reference/asset/balance",
             "api-reference/asset/transfer",
+            "api-reference/asset/balance",
             "api-reference/asset/currencies"
           ]
         },
@@ -62,10 +62,10 @@
           "pages": [
             "api-reference/trade/futures/positions",
             "api-reference/trade/futures/orders-pending",
-            "api-reference/trade/futures/orders-history",
-            "api-reference/trade/futures/fills",
             "api-reference/trade/futures/algo-orders-pending",
             "api-reference/trade/futures/positions-history",
+            "api-reference/trade/futures/orders-history",
+            "api-reference/trade/futures/fills",
             "api-reference/trade/futures/bills"
           ]
         }
