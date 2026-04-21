@@ -1,1499 +1,3533 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "description": "券商管理与用户映射服务接口文档",
-    "title": "Dcore 接口文档",
-    "contact": {},
-    "version": "1.0"
-  },
-  "servers": [
-    {
-      "url": "http://10.10.1.10:38008",
-      "description": "测试环境"
-    }
-  ],
-  "paths": {
-    "/api/v1/apikey/create": {
-      "post": {
-        "summary": "创建用户 API Key",
-        "description": "为特定用户创建新的访问密钥对。",
-        "tags": [
-          "密钥管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiKeyCreateResponse"
+    "openapi": "3.0.0",
+    "info": {
+        "description": "券商管理与用户映射服务接口文档",
+        "title": "Dcore 接口文档",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/apikey/create": {
+            "post": {
+                "description": "为特定用户创建新的访问密钥对。",
+                "tags": [
+                    "密钥管理"
+                ],
+                "summary": "创建用户 API Key",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.CreateApiKeyRequest"
+                            }
+                        }
+                    },
+                    "description": "创建信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.ApiKeyCreateResponse"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "创建信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateApiKeyRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/apikey/delete": {
-      "post": {
-        "summary": "删除用户 API Key",
-        "description": "永久删除指定的访问密钥。",
-        "tags": [
-          "密钥管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
+        "/api/v1/apikey/delete": {
+            "post": {
+                "description": "永久删除指定的访问密钥。",
+                "tags": [
+                    "密钥管理"
+                ],
+                "summary": "删除用户 API Key",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.DeleteApiKeyRequest"
+                            }
+                        }
+                    },
+                    "description": "删除信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "删除信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteApiKeyRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/apikey/list": {
-      "get": {
-        "summary": "获取 API Key 列表",
-        "description": "获取指定用户下的所有访问密钥。",
-        "tags": [
-          "密钥管理"
-        ],
-        "parameters": [
-          {
-            "description": "用户 ID",
-            "name": "user_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiKeyListResponse"
+        "/api/v1/apikey/list": {
+            "get": {
+                "description": "获取指定用户下的所有访问密钥。",
+                "tags": [
+                    "密钥管理"
+                ],
+                "summary": "获取 API Key 列表",
+                "parameters": [
+                    {
+                        "description": "用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.ApiKeyListResponse"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/api/v1/apikey/update": {
-      "post": {
-        "summary": "更新用户 API Key",
-        "description": "更新访问密钥的权限、IP 白名单或状态。",
-        "tags": [
-          "密钥管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
-                }
-              }
-            }
-          }
         },
-        "requestBody": {
-          "description": "更新信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateApiKeyRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/asset/balance": {
-      "get": {
-        "summary": "查询用户资产余额",
-        "description": "查询指定用户在平台上的实时资产余额列表。",
-        "tags": [
-          "资产管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "required": true,
-            "description": "券商侧用户 ID",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "currency",
-            "in": "query",
-            "required": false,
-            "description": "币种 (可选，不传返回全部)",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AssetBalanceResponse"
+        "/api/v1/apikey/update": {
+            "post": {
+                "description": "更新访问密钥的权限、IP 白名单或状态。",
+                "tags": [
+                    "密钥管理"
+                ],
+                "summary": "更新用户 API Key",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.UpdateApiKeyRequest"
+                            }
+                        }
+                    },
+                    "description": "更新信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/api/v1/asset/transfer": {
-      "post": {
-        "summary": "创建资金划转",
-        "description": "在用户的账户内进行业务单元间的资金划转。",
-        "tags": [
-          "资产管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
-                }
-              }
-            }
-          }
         },
-        "requestBody": {
-          "description": "划转信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TransferRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/user/login": {
-      "post": {
-        "summary": "用户登录",
-        "description": "绑定用户登录 Token，用于后续身份校验。",
-        "tags": [
-          "用户管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
+        "/api/v1/asset/balance": {
+            "get": {
+                "description": "查询指定用户在平台上的实时资产余额列表。",
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "查询用户资产余额",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "币种 (可选，不传返回全部)",
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/model.Response"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/model.AssetBalanceRes"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "登录信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginUserRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/user/logout": {
-      "post": {
-        "summary": "用户登出",
-        "description": "清除用户登录状态。",
-        "tags": [
-          "用户管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
+        "/api/v1/asset/currencies": {
+            "get": {
+                "description": "查询券商可用币种配置，不传 currency 返回全部。",
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "查询币种配置",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "币种 (可选)",
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "登出信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LogoutUserRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/user/register": {
-      "post": {
-        "summary": "用户注册",
-        "description": "将券商侧用户 ID 映射到平台全局 UID。如果用户已存在，返回现有 UID。",
-        "tags": [
-          "用户管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserRegisterResponse"
+        "/api/v1/asset/transfer": {
+            "post": {
+                "description": "在用户的账户内进行业务单元间的资金划转。",
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "创建资金划转",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.TransferRequest"
+                            }
+                        }
+                    },
+                    "description": "划转信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "注册信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterUserRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/user/update": {
-      "post": {
-        "summary": "更新用户信息",
-        "description": "更新用户昵称或描述信息。",
-        "tags": [
-          "用户管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 API Key",
-            "name": "x-api-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "时间戳",
-            "name": "x-timestamp",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "签名结果",
-            "name": "x-signature",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response"
+        "/api/v1/trade/asset/balance": {
+            "get": {
+                "description": "查询交易账户余额。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "外部查询交易账户余额",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "币种",
+                        "name": "ccy",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "更新信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/inner/auth/verify-signature": {
-      "post": {
-        "summary": "内部签名校验",
-        "description": "验证 OpenAPI 请求的 HMAC-SHA256 签名。",
-        "tags": [
-          "内部接口"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VerifySignatureResponse"
+        "/api/v1/trade/futures/algo-orders-pending": {
+            "get": {
+                "description": "查询合约当前止盈止损委托。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约止盈止损委托",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "策略单类型",
+                        "name": "ordType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "签名信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VerifySignatureRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/inner/auth/verify-token": {
-      "post": {
-        "summary": "内部 Token 校验",
-        "description": "校验 Token 合法性并返回简要用户信息。",
-        "tags": [
-          "内部接口"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VerifyTokenResponse"
+        "/api/v1/trade/futures/bills": {
+            "get": {
+                "description": "查询合约资金流水。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约资金流水",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "流水类型",
+                        "name": "incomeType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "币种",
+                        "name": "ccy",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         },
-        "requestBody": {
-          "description": "Token 信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VerifyTokenRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/inner/broker/all": {
-      "get": {
-        "summary": "获取全部券商列表",
-        "description": "获取所有注册券商的简要列表 (ID 和名称)。",
-        "tags": [
-          "券商管理"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrokerAllResponse"
+        "/api/v1/trade/futures/fills": {
+            "get": {
+                "description": "查询合约成交明细。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约成交明细",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单 ID",
+                        "name": "ordId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "交易模式",
+                        "name": "tdMode",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/inner/broker/list": {
-      "get": {
-        "summary": "分页获取券商列表",
-        "description": "获取所有注册券商的分页列表。",
-        "tags": [
-          "券商管理"
-        ],
-        "parameters": [
-          {
-            "description": "页码",
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "每页数量",
-            "name": "page_size",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrokerListResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/inner/broker/{broker_id}": {
-      "get": {
-        "summary": "获取券商详情",
-        "description": "根据 ID 获取券商详细信息。",
-        "tags": [
-          "券商管理"
-        ],
-        "parameters": [
-          {
-            "description": "券商 ID",
-            "name": "broker_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrokerInfoResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/inner/user/create-special": {
-      "post": {
-        "summary": "创建特殊账户 (系统/做市商)",
-        "description": "创建系统账户或做市商账户，UID 遵循特定范围且不混淆。",
-        "tags": [
-          "内部接口"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserRegisterResponse"
-                }
-              }
-            }
-          }
         },
-        "requestBody": {
-          "description": "账户信息",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateSpecialUserRequest"
-              }
+        "/api/v1/trade/futures/orders-history": {
+            "get": {
+                "description": "查询合约历史委托列表。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约历史委托",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单类型",
+                        "name": "ordType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单状态",
+                        "name": "state",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "AssetBalanceRequest": {
-        "type": "object",
-        "required": [
-          "user_id"
-        ],
-        "properties": {
-          "currency": {
-            "description": "币种 (可选，不传返回全部)",
-            "type": "string",
-            "example": "USDT"
-          },
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "AssetBalanceResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AssetBalanceItem"
+        },
+        "/api/v1/trade/futures/orders-pending": {
+            "get": {
+                "description": "查询合约当前限价单委托。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约当前委托",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
+        },
+        "/api/v1/trade/futures/positions": {
+            "get": {
+                "description": "查询合约当前仓位。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约当前仓位",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "仓位 ID",
+                        "name": "posId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "交易模式",
+                        "name": "tdMode",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade/futures/positions-history": {
+            "get": {
+                "description": "查询合约历史仓位。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "合约历史仓位",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SWAP",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "标的",
+                        "name": "uly",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade/spot/fills": {
+            "get": {
+                "description": "查询现货成交明细。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "现货成交明细",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SPOT",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单 ID",
+                        "name": "ordId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "交易模式",
+                        "name": "tdMode",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade/spot/orders-history": {
+            "get": {
+                "description": "查询现货历史委托列表。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "现货历史委托",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SPOT",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单类型",
+                        "name": "ordType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "订单状态",
+                        "name": "state",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 after",
+                        "name": "after",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "游标 before",
+                        "name": "before",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trade/spot/orders-pending": {
+            "get": {
+                "description": "查询现货当前委托列表。",
+                "tags": [
+                    "交易查询"
+                ],
+                "summary": "现货当前委托",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商侧用户 ID",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品类型，默认 SPOT",
+                        "name": "instType",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "产品 ID",
+                        "name": "instId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "买卖方向",
+                        "name": "side",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "持仓方向",
+                        "name": "posSide",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "开始时间戳(ms)",
+                        "name": "begin",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "结束时间戳(ms)",
+                        "name": "end",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "条数限制",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/login": {
+            "post": {
+                "description": "绑定用户登录 Token，用于后续身份校验。",
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户登录",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.LoginUserRequest"
+                            }
+                        }
+                    },
+                    "description": "登录信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/logout": {
+            "post": {
+                "description": "清除用户登录状态。",
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户登出",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.LogoutUserRequest"
+                            }
+                        }
+                    },
+                    "description": "登出信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/register": {
+            "post": {
+                "description": "将券商侧用户 ID 映射到平台全局 UID。如果用户已存在，返回现有 UID。",
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户注册",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.RegisterUserRequest"
+                            }
+                        }
+                    },
+                    "description": "注册信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.UserRegisterResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/update": {
+            "post": {
+                "description": "更新用户昵称或描述信息。",
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "更新用户信息",
+                "parameters": [
+                    {
+                        "description": "券商 API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "时间戳",
+                        "name": "x-timestamp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "签名结果",
+                        "name": "x-signature",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.UpdateUserRequest"
+                            }
+                        }
+                    },
+                    "description": "更新信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/auth/verify-signature": {
+            "post": {
+                "description": "验证 OpenAPI 请求的 HMAC-SHA256 签名。",
+                "tags": [
+                    "内部接口-用户鉴权"
+                ],
+                "summary": "内部签名校验",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.VerifySignatureRequest"
+                            }
+                        }
+                    },
+                    "description": "签名信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.VerifySignatureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/auth/verify-token": {
+            "post": {
+                "description": "校验 Token 合法性并返回简要用户信息。",
+                "tags": [
+                    "内部接口-用户鉴权"
+                ],
+                "summary": "内部 Token 校验",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.VerifyTokenRequest"
+                            }
+                        }
+                    },
+                    "description": "Token 信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.VerifyTokenResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/all": {
+            "get": {
+                "description": "获取所有注册券商的简要列表 (ID 和名称)。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "获取全部券商列表",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.BrokerAllResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/asset/balance": {
+            "get": {
+                "description": "调用券商配置的 query_webhook_url 查询资产余额。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "内部接口：查询券商资产",
+                "parameters": [
+                    {
+                        "description": "券商 ID",
+                        "name": "broker_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "用户UID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "币种（可选）",
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/asset/transfer": {
+            "post": {
+                "description": "调用券商配置的 transfer_webhook_url 执行划转。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "内部接口：调用券商划转",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.InnerBrokerTransferRequest"
+                            }
+                        }
+                    },
+                    "description": "划转参数",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/list": {
+            "get": {
+                "description": "获取所有注册券商的分页列表。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "分页获取券商列表",
+                "parameters": [
+                    {
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "每页数量",
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.BrokerListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/verify-signature": {
+            "post": {
+                "description": "为内部服务提供券商维度的 OpenAPI 签名校验。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "内部接口：券商签名验证",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.VerifyBrokerSignatureRequest"
+                            }
+                        }
+                    },
+                    "description": "签名信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.VerifyBrokerSignatureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/broker/{broker_id}": {
+            "get": {
+                "description": "根据 ID 获取券商详细信息。",
+                "tags": [
+                    "内部接口-券商管理"
+                ],
+                "summary": "获取券商详情",
+                "parameters": [
+                    {
+                        "description": "券商 ID",
+                        "name": "broker_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.BrokerInfoResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/hedge_config/create": {
+            "post": {
+                "description": "内部接口：为指定 UID 创建对冲配置。",
+                "tags": [
+                    "内部接口-对冲配置"
+                ],
+                "summary": "创建用户对冲配置",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.HedgeConfigCreateReq"
+                            }
+                        }
+                    },
+                    "description": "创建参数",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/hedge_config/info": {
+            "get": {
+                "description": "内部接口：根据平台 UID 获取对冲配置详情。",
+                "tags": [
+                    "内部接口-对冲配置"
+                ],
+                "summary": "获取用户对冲配置详情",
+                "parameters": [
+                    {
+                        "description": "平台全局 UID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.UserHedgeConfig"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/hedge_config/list": {
+            "get": {
+                "description": "内部接口：获取对冲配置列表，支持按 UID 或券商 ID 筛选。",
+                "tags": [
+                    "内部接口-对冲配置"
+                ],
+                "summary": "分页获取对冲配置列表",
+                "parameters": [
+                    {
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "每页数量",
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "平台全局 UID",
+                        "name": "uid",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "券商 ID",
+                        "name": "broker_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/model.UserHedgeConfig"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/hedge_config/update": {
+            "post": {
+                "description": "内部接口：根据平台 UID 更新对冲配置信息。",
+                "tags": [
+                    "内部接口-对冲配置"
+                ],
+                "summary": "更新用户对冲配置",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.HedgeConfigUpdateReq"
+                            }
+                        }
+                    },
+                    "description": "更新参数",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/user/create-apikey": {
+            "post": {
+                "description": "为指定 UID 生成一对新的 AK/SK",
+                "tags": [
+                    "内部接口-用户管理"
+                ],
+                "summary": "内部生成用户 API Key",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/model.CreateApiKeyRequest"
+                            }
+                        }
+                    },
+                    "description": "请求参数",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.CreateApiKeyResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/user/create-special": {
+            "post": {
+                "description": "创建系统账户或做市商账户，UID 遵循特定范围且不混淆。",
+                "tags": [
+                    "内部接口-用户管理"
+                ],
+                "summary": "创建特殊账户 (系统/做市商)",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/api.CreateSpecialUserRequest"
+                            }
+                        }
+                    },
+                    "description": "账户信息",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.UserRegisterResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/user/info": {
+            "get": {
+                "description": "内部接口：根据平台 UID 或 券商 ID + 券商用户 ID 获取用户信息。",
+                "tags": [
+                    "内部接口-用户管理"
+                ],
+                "summary": "获取用户详情",
+                "parameters": [
+                    {
+                        "description": "平台全局 UID",
+                        "name": "uid",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "券商 ID",
+                        "name": "broker_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "券商用户 ID",
+                        "name": "broker_uid",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.BrokerUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inner/user/list": {
+            "get": {
+                "description": "内部接口：获取用户映射列表，支持按券商 ID、用户名、券商用户 ID 筛选。",
+                "tags": [
+                    "内部接口-用户管理"
+                ],
+                "summary": "分页获取用户列表",
+                "parameters": [
+                    {
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "每页数量",
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "券商 ID",
+                        "name": "broker_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "用户名",
+                        "name": "username",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "券商用户 ID",
+                        "name": "broker_uid",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/model.UserListRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      },
-      "AssetBalanceItem": {
-        "type": "object",
-        "properties": {
-          "available": {
-            "description": "可用余额",
-            "type": "string",
-            "example": "800.00"
-          },
-          "balance": {
-            "description": "总余额",
-            "type": "string",
-            "example": "1000.50"
-          },
-          "currency": {
-            "description": "币种",
-            "type": "string",
-            "example": "USDT"
-          },
-          "equity": {
-            "description": "账户权益",
-            "type": "string",
-            "example": "1000.50"
-          },
-          "frozen": {
-            "description": "冻结金额",
-            "type": "string",
-            "example": "200.50"
-          }
+    },
+    "servers": [
+        {
+            "url": "http://10.10.1.10:38008",
+            "description": "测试环境"
         }
-      },
-      "CreateApiKeyRequest": {
-        "type": "object",
-        "required": [
-          "user_id"
-        ],
-        "properties": {
-          "authorities": {
-            "description": "权限列表 ([READ, TRADE])",
-            "type": "array",
-            "items": {
-              "type": "string"
+    ],
+    "components": {
+        "schemas": {
+            "api.CreateApiKeyRequest": {
+                "type": "object",
+                "required": [
+                    "user_id"
+                ],
+                "properties": {
+                    "authorities": {
+                        "description": "权限列表 ([READ, TRADE])",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "[\"READ\"]"
+                        ]
+                    },
+                    "ip_list": {
+                        "description": "IP 白名单 (逗号分隔)",
+                        "type": "string",
+                        "example": "127.0.0.1"
+                    },
+                    "remark": {
+                        "description": "备注信息",
+                        "type": "string",
+                        "example": "我的密钥"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    }
+                }
             },
-            "example": [
-              "[\"READ\"]"
-            ]
-          },
-          "ip_list": {
-            "description": "IP 白名单 (逗号分隔)",
-            "type": "string",
-            "example": "127.0.0.1"
-          },
-          "remark": {
-            "description": "备注信息",
-            "type": "string",
-            "example": "我的密钥"
-          },
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "CreateSpecialUserRequest": {
-        "type": "object",
-        "required": [
-          "broker_id",
-          "type"
-        ],
-        "properties": {
-          "broker_id": {
-            "description": "券商 ID",
-            "type": "integer",
-            "example": 1001
-          },
-          "type": {
-            "description": "账户类型: sys, mm",
-            "type": "string",
-            "enum": [
-              "sys",
-              "mm"
-            ],
-            "example": "sys"
-          }
-        }
-      },
-      "DeleteApiKeyRequest": {
-        "type": "object",
-        "required": [
-          "api_key"
-        ],
-        "properties": {
-          "api_key": {
-            "description": "待删除的 API Key",
-            "type": "string",
-            "example": "ak_123"
-          }
-        }
-      },
-      "LoginUserRequest": {
-        "type": "object",
-        "required": [
-          "token",
-          "user_id"
-        ],
-        "properties": {
-          "token": {
-            "description": "登录 Token",
-            "type": "string",
-            "example": "token_123"
-          },
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "LogoutUserRequest": {
-        "type": "object",
-        "required": [
-          "user_id"
-        ],
-        "properties": {
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "RegisterUserRequest": {
-        "type": "object",
-        "required": [
-          "user_id"
-        ],
-        "properties": {
-          "desc": {
-            "description": "用户描述",
-            "type": "string",
-            "example": "测试用户"
-          },
-          "user_id": {
-            "description": "券商侧用户唯一 ID",
-            "type": "string",
-            "example": "user_01"
-          },
-          "user_name": {
-            "description": "用户昵称",
-            "type": "string",
-            "example": "张三"
-          }
-        }
-      },
-      "TransferRequest": {
-        "type": "object",
-        "required": [
-          "amount",
-          "currency",
-          "direction",
-          "txn_id",
-          "user_id"
-        ],
-        "properties": {
-          "amount": {
-            "description": "划转金额",
-            "type": "string",
-            "example": "100.00"
-          },
-          "currency": {
-            "description": "币种",
-            "type": "string",
-            "example": "USDT"
-          },
-          "direction": {
-            "description": "划转方向: 1-入, 2-出",
-            "type": "integer",
-            "enum": [
-              1,
-              2
-            ],
-            "example": 1
-          },
-          "remark": {
-            "description": "备注",
-            "type": "string",
-            "example": "充值"
-          },
-          "txn_id": {
-            "description": "券商侧唯一交易流水号",
-            "type": "string",
-            "example": "txn_123456"
-          },
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "UpdateApiKeyRequest": {
-        "type": "object",
-        "required": [
-          "api_key"
-        ],
-        "properties": {
-          "api_key": {
-            "description": "待更新的 API Key",
-            "type": "string",
-            "example": "ak_123"
-          },
-          "authorities": {
-            "description": "权限列表",
-            "type": "array",
-            "items": {
-              "type": "string"
+            "api.CreateSpecialUserRequest": {
+                "type": "object",
+                "required": [
+                    "broker_id",
+                    "type"
+                ],
+                "properties": {
+                    "broker_id": {
+                        "description": "券商 ID",
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "type": {
+                        "description": "账户类型: sys, mm",
+                        "type": "string",
+                        "enum": [
+                            "sys",
+                            "mm"
+                        ],
+                        "example": "sys"
+                    }
+                }
             },
-            "example": [
-              "[\"READ\"]"
-            ]
-          },
-          "ip_list": {
-            "description": "IP 白名单",
-            "type": "string",
-            "example": "127.0.0.1"
-          },
-          "remark": {
-            "description": "备注",
-            "type": "string",
-            "example": "更新后的备注"
-          },
-          "status": {
-            "description": "状态: 1-正常, 2-禁用",
-            "type": "integer",
-            "example": 1
-          }
-        }
-      },
-      "UpdateUserRequest": {
-        "type": "object",
-        "required": [
-          "user_id"
-        ],
-        "properties": {
-          "desc": {
-            "description": "新描述",
-            "type": "string",
-            "example": "新描述"
-          },
-          "user_id": {
-            "description": "券商侧用户 ID",
-            "type": "string",
-            "example": "user_01"
-          },
-          "user_name": {
-            "description": "新昵称",
-            "type": "string",
-            "example": "新昵称"
-          }
-        }
-      },
-      "ApiKeyCreateResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/ApiKeyCreateResponseData"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "ApiKeyCreateResponseData": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "description": "API Key 详细信息",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BrokerUserApiKey"
-              }
-            ]
-          },
-          "sk": {
-            "description": "原始 API Secret (仅创建时返回一次)",
-            "type": "string",
-            "example": "abc123456789"
-          }
-        }
-      },
-      "ApiKeyListResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BrokerUserApiKey"
-            }
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "BrokerAllResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true
-            }
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "BrokerInfo": {
-        "type": "object",
-        "properties": {
-          "api_key": {
-            "description": "签名用的 API Key",
-            "type": "string",
-            "example": "test_ak"
-          },
-          "broker_id": {
-            "description": "券商业务 ID",
-            "type": "integer",
-            "example": 1001
-          },
-          "config": {
-            "description": "额外配置 (JSON 字符串)",
-            "type": "string",
-            "example": "{}"
-          },
-          "created_at": {
-            "description": "创建时间",
-            "type": "string"
-          },
-          "domain": {
-            "description": "券商网站域名",
-            "type": "string",
-            "example": "broker.com"
-          },
-          "logo": {
-            "description": "券商 Logo 地址",
-            "type": "string",
-            "example": "https://logo.com/a.png"
-          },
-          "name": {
-            "description": "券商名称",
-            "type": "string",
-            "example": "DemoBroker"
-          },
-          "status": {
-            "description": "状态 (1:启用, 0:禁用)",
-            "type": "integer",
-            "example": 1
-          },
-          "updated_at": {
-            "description": "更新时间",
-            "type": "string"
-          }
-        }
-      },
-      "BrokerInfoResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/BrokerInfo"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "BrokerListResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/BrokerListResponseData"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "BrokerListResponseData": {
-        "type": "object",
-        "properties": {
-          "list": {
-            "description": "券商信息列表",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BrokerInfo"
-            }
-          },
-          "total": {
-            "description": "总记录数",
-            "type": "integer",
-            "example": 10
-          }
-        }
-      },
-      "BrokerUserApiKey": {
-        "type": "object",
-        "properties": {
-          "api_key": {
-            "description": "访问密钥 (Access Key)",
-            "type": "string",
-            "example": "ak_123"
-          },
-          "authorities": {
-            "description": "权限列表 (JSON 格式)",
-            "type": "string",
-            "example": "[\"READ\"]"
-          },
-          "broker_id": {
-            "description": "所属券商 ID",
-            "type": "integer",
-            "example": 1001
-          },
-          "created_at": {
-            "description": "创建时间",
-            "type": "string"
-          },
-          "expired_at": {
-            "description": "过期时间戳 (0 表示永不过期)",
-            "type": "integer",
-            "example": 0
-          },
-          "id": {
-            "description": "内部主键 ID",
-            "type": "integer",
-            "example": 1
-          },
-          "ip_white_list": {
-            "description": "IP 白名单",
-            "type": "string",
-            "example": "127.0.0.1"
-          },
-          "passphrase": {
-            "description": "API 口令 (可选)",
-            "type": "string",
-            "example": "pass123"
-          },
-          "remark": {
-            "description": "备注信息",
-            "type": "string",
-            "example": "我的密钥"
-          },
-          "status": {
-            "description": "状态: 1-正常, 2-禁用",
-            "type": "integer",
-            "example": 1
-          },
-          "updated_at": {
-            "description": "更新时间",
-            "type": "string"
-          },
-          "user_id": {
-            "description": "券商侧用户唯一 ID",
-            "type": "string",
-            "example": "user_01"
-          }
-        }
-      },
-      "Response": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "description": "状态码 (200:成功, 400:参数错误, 500:系统错误)",
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "description": "响应数据"
-          },
-          "message": {
-            "description": "提示信息",
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "SimpleUserDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "平台用户 ID",
-            "type": "integer",
-            "example": 1000885589780
-          },
-          "uid": {
-            "description": "混淆后的全局 UID",
-            "type": "integer",
-            "example": 1000885589780
-          },
-          "username": {
-            "description": "用户名",
-            "type": "string",
-            "example": "Tester"
-          }
-        }
-      },
-      "UserRegisterResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/UserRegisterResponseData"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "UserRegisterResponseData": {
-        "type": "object",
-        "properties": {
-          "uid": {
-            "description": "平台生成的唯一用户ID",
-            "type": "integer",
-            "example": 1000885589780
-          }
-        }
-      },
-      "VerifySignatureRequest": {
-        "type": "object",
-        "required": [
-          "apiKey",
-          "method",
-          "path",
-          "signature",
-          "timestamp"
-        ],
-        "properties": {
-          "apiKey": {
-            "description": "访问密钥",
-            "type": "string",
-            "example": "7007b96cf748fdd0"
-          },
-          "body": {
-            "description": "请求体 (可选)",
-            "type": "string",
-            "example": "{\"user_id\":\"123\"}"
-          },
-          "method": {
-            "description": "HTTP 方法",
-            "type": "string",
-            "example": "POST"
-          },
-          "path": {
-            "description": "请求路径",
-            "type": "string",
-            "example": "/api/v1/user/login"
-          },
-          "query": {
-            "description": "请求参数 (可选)",
-            "type": "string",
-            "example": "user_id=123"
-          },
-          "signature": {
-            "description": "签名结果",
-            "type": "string",
-            "example": "base64_str"
-          },
-          "timestamp": {
-            "description": "时间戳 (秒或毫秒)",
-            "type": "string",
-            "example": "1689584042"
-          }
-        }
-      },
-      "VerifySignatureResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/VerifySignatureResponseData"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "VerifySignatureResponseData": {
-        "type": "object",
-        "properties": {
-          "authorities": {
-            "description": "API Key 权限列表",
-            "type": "array",
-            "items": {
-              "type": "string"
+            "api.DeleteApiKeyRequest": {
+                "type": "object",
+                "required": [
+                    "api_key"
+                ],
+                "properties": {
+                    "api_key": {
+                        "description": "待删除的 API Key",
+                        "type": "string",
+                        "example": "ak_123"
+                    }
+                }
             },
-            "example": [
-              "[\"READ\"]"
-            ]
-          },
-          "isValid": {
-            "description": "签名是否有效",
-            "type": "boolean",
-            "example": true
-          },
-          "userId": {
-            "description": "券商侧用户ID",
-            "type": "string",
-            "example": "broker_user_01"
-          }
+            "api.InnerBrokerTransferRequest": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "broker_id",
+                    "currency",
+                    "fromBiz",
+                    "toBiz",
+                    "uid"
+                ],
+                "properties": {
+                    "amount": {
+                        "description": "划转金额",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "broker_id": {
+                        "description": "券商ID",
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "currency": {
+                        "description": "币种",
+                        "type": "string",
+                        "example": "BTC"
+                    },
+                    "fromBiz": {
+                        "description": "来源账户",
+                        "type": "string",
+                        "example": "exchange"
+                    },
+                    "toBiz": {
+                        "description": "目标账户",
+                        "type": "string",
+                        "example": "asset"
+                    },
+                    "uid": {
+                        "description": "用户UID",
+                        "type": "string",
+                        "example": "1001636910453"
+                    }
+                }
+            },
+            "api.LoginUserRequest": {
+                "type": "object",
+                "required": [
+                    "token",
+                    "user_id"
+                ],
+                "properties": {
+                    "token": {
+                        "description": "登录 Token",
+                        "type": "string",
+                        "example": "token_123"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    }
+                }
+            },
+            "api.LogoutUserRequest": {
+                "type": "object",
+                "required": [
+                    "user_id"
+                ],
+                "properties": {
+                    "user_id": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    }
+                }
+            },
+            "api.RegisterUserRequest": {
+                "type": "object",
+                "required": [
+                    "user_id"
+                ],
+                "properties": {
+                    "desc": {
+                        "description": "用户描述",
+                        "type": "string",
+                        "example": "测试用户"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户唯一 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    },
+                    "user_name": {
+                        "description": "用户昵称",
+                        "type": "string",
+                        "example": "张三"
+                    }
+                }
+            },
+            "api.TransferRequest": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "currency",
+                    "direction",
+                    "txn_id",
+                    "user_id"
+                ],
+                "properties": {
+                    "amount": {
+                        "description": "划转金额",
+                        "type": "string",
+                        "example": "100.00"
+                    },
+                    "currency": {
+                        "description": "币种",
+                        "type": "string",
+                        "example": "USDT"
+                    },
+                    "direction": {
+                        "description": "划转方向: 1-入, 2-出",
+                        "type": "integer",
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "example": 1
+                    },
+                    "remark": {
+                        "description": "备注",
+                        "type": "string",
+                        "example": "充值"
+                    },
+                    "txn_id": {
+                        "description": "券商侧唯一交易流水号",
+                        "type": "string",
+                        "example": "txn_123456"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    }
+                }
+            },
+            "api.UpdateApiKeyRequest": {
+                "type": "object",
+                "required": [
+                    "api_key"
+                ],
+                "properties": {
+                    "api_key": {
+                        "description": "待更新的 API Key",
+                        "type": "string",
+                        "example": "ak_123"
+                    },
+                    "authorities": {
+                        "description": "权限列表",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "[\"READ\"]"
+                        ]
+                    },
+                    "ip_list": {
+                        "description": "IP 白名单",
+                        "type": "string",
+                        "example": "127.0.0.1"
+                    },
+                    "remark": {
+                        "description": "备注",
+                        "type": "string",
+                        "example": "更新后的备注"
+                    },
+                    "status": {
+                        "description": "状态: 1-正常, 2-禁用",
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
+            },
+            "api.UpdateUserRequest": {
+                "type": "object",
+                "required": [
+                    "user_id"
+                ],
+                "properties": {
+                    "desc": {
+                        "description": "新描述",
+                        "type": "string",
+                        "example": "新描述"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    },
+                    "user_name": {
+                        "description": "新昵称",
+                        "type": "string",
+                        "example": "新昵称"
+                    }
+                }
+            },
+            "model.ApiKeyCreateResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.ApiKeyCreateResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.ApiKeyCreateResponseData": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "description": "API Key 详细信息",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/model.BrokerUserApiKey"
+                            }
+                        ]
+                    },
+                    "sk": {
+                        "description": "原始 API Secret (仅创建时返回一次)",
+                        "type": "string",
+                        "example": "abc123456789"
+                    }
+                }
+            },
+            "model.ApiKeyListResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.BrokerUserApiKey"
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.AssetBalanceRes": {
+                "type": "object",
+                "properties": {
+                    "available": {
+                        "type": "string"
+                    },
+                    "balance": {
+                        "type": "string"
+                    },
+                    "currency": {
+                        "type": "string"
+                    },
+                    "equity": {
+                        "type": "string"
+                    },
+                    "frozen": {
+                        "type": "string"
+                    }
+                }
+            },
+            "model.BrokerAllResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.BrokerInfo": {
+                "type": "object",
+                "properties": {
+                    "api_key": {
+                        "description": "签名用的 API Key",
+                        "type": "string",
+                        "example": "test_ak"
+                    },
+                    "broker_id": {
+                        "description": "券商业务 ID",
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "config": {
+                        "description": "额外配置 (JSON 字符串)",
+                        "type": "string",
+                        "example": "{}"
+                    },
+                    "created_at": {
+                        "description": "创建时间",
+                        "type": "string"
+                    },
+                    "domain": {
+                        "description": "券商网站域名",
+                        "type": "string",
+                        "example": "broker.com"
+                    },
+                    "enable_transfer": {
+                        "description": "是否开启划转功能",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "logo": {
+                        "description": "券商 Logo 地址",
+                        "type": "string",
+                        "example": "https://logo.com/a.png"
+                    },
+                    "name": {
+                        "description": "券商名称",
+                        "type": "string",
+                        "example": "DemoBroker"
+                    },
+                    "query_webhook_url": {
+                        "description": "查询 webhook 地址",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "状态 (1:启用, 0:禁用)",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "transfer_webhook_url": {
+                        "description": "划转 webhook 地址",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "更新时间",
+                        "type": "string"
+                    }
+                }
+            },
+            "model.BrokerInfoResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.BrokerInfo"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.BrokerListResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.BrokerListResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.BrokerListResponseData": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "description": "券商信息列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.BrokerInfo"
+                        }
+                    },
+                    "total": {
+                        "description": "总记录数",
+                        "type": "integer",
+                        "example": 10
+                    }
+                }
+            },
+            "model.BrokerUser": {
+                "type": "object",
+                "properties": {
+                    "broker_id": {
+                        "type": "integer"
+                    },
+                    "broker_uid": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "extra": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "integer"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                }
+            },
+            "model.BrokerUserApiKey": {
+                "type": "object",
+                "properties": {
+                    "api_key": {
+                        "description": "访问密钥 (Access Key)",
+                        "type": "string",
+                        "example": "ak_123"
+                    },
+                    "authorities": {
+                        "description": "权限列表 (JSON 格式)",
+                        "type": "string",
+                        "example": "[\"READ\"]"
+                    },
+                    "broker_id": {
+                        "description": "所属券商 ID",
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "created_at": {
+                        "description": "创建时间",
+                        "type": "string"
+                    },
+                    "expired_at": {
+                        "description": "过期时间戳 (0 表示永不过期)",
+                        "type": "integer",
+                        "example": 0
+                    },
+                    "id": {
+                        "description": "内部主键 ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "ip_white_list": {
+                        "description": "IP 白名单",
+                        "type": "string",
+                        "example": "127.0.0.1"
+                    },
+                    "passphrase": {
+                        "description": "API 口令 (可选)",
+                        "type": "string",
+                        "example": "pass123"
+                    },
+                    "remark": {
+                        "description": "备注信息",
+                        "type": "string",
+                        "example": "我的密钥"
+                    },
+                    "status": {
+                        "description": "状态: 1-正常, 2-禁用",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "updated_at": {
+                        "description": "更新时间",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "券商侧用户唯一 ID",
+                        "type": "string",
+                        "example": "user_01"
+                    }
+                }
+            },
+            "model.CreateApiKeyRequest": {
+                "type": "object",
+                "required": [
+                    "uid"
+                ],
+                "properties": {
+                    "authorities": {
+                        "description": "e.g. \"[\\\"READ\\\",\\\"TRADE\\\"]\"",
+                        "type": "string"
+                    },
+                    "brokerId": {
+                        "description": "optional, default 0 or inferred",
+                        "type": "integer"
+                    },
+                    "remark": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.CreateApiKeyResponse": {
+                "type": "object",
+                "properties": {
+                    "apiKey": {
+                        "type": "string"
+                    },
+                    "apiSecret": {
+                        "type": "string"
+                    }
+                }
+            },
+            "model.HedgeConfigCreateReq": {
+                "type": "object",
+                "required": [
+                    "broker_id",
+                    "uid"
+                ],
+                "properties": {
+                    "broker_id": {
+                        "type": "integer"
+                    },
+                    "hedge_ratio": {
+                        "type": "number"
+                    },
+                    "remark": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.HedgeConfigUpdateReq": {
+                "type": "object",
+                "required": [
+                    "uid"
+                ],
+                "properties": {
+                    "hedge_ratio": {
+                        "type": "number"
+                    },
+                    "remark": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.Response": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "description": "状态码 (200:成功, 400:参数错误, 500:系统错误)",
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "description": "响应数据"
+                    },
+                    "message": {
+                        "description": "提示信息",
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.SimpleUserDTO": {
+                "type": "object",
+                "properties": {
+                    "broker_uid": {
+                        "description": "券商侧用户 ID",
+                        "type": "string",
+                        "example": "U10001"
+                    },
+                    "id": {
+                        "description": "平台用户 ID",
+                        "type": "integer",
+                        "example": 1000885589780
+                    },
+                    "uid": {
+                        "description": "混淆后的全局 UID",
+                        "type": "integer",
+                        "example": 1000885589780
+                    },
+                    "username": {
+                        "description": "用户名",
+                        "type": "string",
+                        "example": "Tester"
+                    }
+                }
+            },
+            "model.UserHedgeConfig": {
+                "type": "object",
+                "properties": {
+                    "broker_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "hedge_ratio": {
+                        "type": "number"
+                    },
+                    "hedge_tag": {
+                        "type": "string"
+                    },
+                    "is_manual_modified": {
+                        "type": "integer"
+                    },
+                    "modify_expire_time": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "integer"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                }
+            },
+            "model.UserListRes": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/model.BrokerUser"
+                        }
+                    },
+                    "total": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "model.UserRegisterResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.UserRegisterResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.UserRegisterResponseData": {
+                "type": "object",
+                "properties": {
+                    "uid": {
+                        "description": "平台生成的唯一用户ID",
+                        "type": "integer",
+                        "example": 1000885589780
+                    }
+                }
+            },
+            "model.VerifyBrokerSignatureRequest": {
+                "type": "object",
+                "required": [
+                    "apiKey",
+                    "method",
+                    "path",
+                    "signature",
+                    "timestamp"
+                ],
+                "properties": {
+                    "apiKey": {
+                        "type": "string",
+                        "example": "test_ak"
+                    },
+                    "body": {
+                        "type": "string",
+                        "example": "{}"
+                    },
+                    "method": {
+                        "type": "string",
+                        "example": "POST"
+                    },
+                    "path": {
+                        "type": "string",
+                        "example": "/api/v1/user/register"
+                    },
+                    "query": {
+                        "type": "string",
+                        "example": ""
+                    },
+                    "signature": {
+                        "type": "string",
+                        "example": "xxx"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "example": "1710000000000"
+                    }
+                }
+            },
+            "model.VerifyBrokerSignatureResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.VerifyBrokerSignatureResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    }
+                }
+            },
+            "model.VerifyBrokerSignatureResponseData": {
+                "type": "object",
+                "properties": {
+                    "brokerId": {
+                        "type": "integer",
+                        "example": 1001
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "DemoBroker"
+                    }
+                }
+            },
+            "model.VerifySignatureRequest": {
+                "type": "object",
+                "required": [
+                    "apiKey",
+                    "method",
+                    "path",
+                    "signature",
+                    "timestamp"
+                ],
+                "properties": {
+                    "apiKey": {
+                        "description": "访问密钥",
+                        "type": "string",
+                        "example": "7007b96cf748fdd0"
+                    },
+                    "body": {
+                        "description": "请求体 (可选)",
+                        "type": "string",
+                        "example": "{\"user_id\":\"123\"}"
+                    },
+                    "method": {
+                        "description": "HTTP 方法",
+                        "type": "string",
+                        "example": "POST"
+                    },
+                    "path": {
+                        "description": "请求路径",
+                        "type": "string",
+                        "example": "/api/v1/user/login"
+                    },
+                    "query": {
+                        "description": "请求参数 (可选)",
+                        "type": "string",
+                        "example": "user_id=123"
+                    },
+                    "signature": {
+                        "description": "签名结果",
+                        "type": "string",
+                        "example": "base64_str"
+                    },
+                    "timestamp": {
+                        "description": "时间戳 (秒或毫秒)",
+                        "type": "string",
+                        "example": "1689584042"
+                    }
+                }
+            },
+            "model.VerifySignatureResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.VerifySignatureResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.VerifySignatureResponseData": {
+                "type": "object",
+                "properties": {
+                    "authorities": {
+                        "description": "API Key 权限列表",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "[\"READ\"]"
+                        ]
+                    },
+                    "userId": {
+                        "description": "平台侧全局 UID",
+                        "type": "string",
+                        "example": "1000175565425"
+                    }
+                }
+            },
+            "model.VerifyTokenRequest": {
+                "type": "object",
+                "required": [
+                    "token"
+                ],
+                "properties": {
+                    "token": {
+                        "description": "登录 Token",
+                        "type": "string",
+                        "example": "demo_token_153924"
+                    }
+                }
+            },
+            "model.VerifyTokenResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "example": 200
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/model.VerifyTokenResponseData"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "成功"
+                    }
+                }
+            },
+            "model.VerifyTokenResponseData": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "description": "用户基本信息",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/model.SimpleUserDTO"
+                            }
+                        ]
+                    }
+                }
+            }
         }
-      },
-      "VerifyTokenRequest": {
-        "type": "object",
-        "required": [
-          "token"
-        ],
-        "properties": {
-          "token": {
-            "description": "登录 Token",
-            "type": "string",
-            "example": "demo_token_153924"
-          }
-        }
-      },
-      "VerifyTokenResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "example": 200
-          },
-          "data": {
-            "$ref": "#/components/schemas/VerifyTokenResponseData"
-          },
-          "message": {
-            "type": "string",
-            "example": "成功"
-          }
-        }
-      },
-      "VerifyTokenResponseData": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "description": "用户基本信息",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SimpleUserDTO"
-              }
-            ]
-          }
-        }
-      }
     }
-  }
 }
